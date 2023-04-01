@@ -267,6 +267,7 @@ exports.Prisma.SessionsScalarFieldEnum = makeEnum({
   updatedAt: 'updatedAt',
   uuid: 'uuid',
   jwt: 'jwt',
+  user_uuid: 'user_uuid',
   user_id: 'user_id'
 });
 

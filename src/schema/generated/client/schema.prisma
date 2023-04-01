@@ -421,8 +421,9 @@ model sessions {
   jwt String
 
   // User that owns the session
-  user_id String @db.ObjectId
-  user    users  @relation(fields: [user_id], references: [id])
+  user_uuid String
+  user_id   String @db.ObjectId
+  user      users  @relation(fields: [user_id], references: [id])
 }
 
 // una imagen simple, la original y el recorte

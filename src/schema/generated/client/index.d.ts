@@ -272,6 +272,7 @@ export type sessions = {
   updatedAt: Date | null
   uuid: string
   jwt: string
+  user_uuid: string
   user_id: string
 }
 
@@ -18389,6 +18390,7 @@ export namespace Prisma {
     updatedAt: Date | null
     uuid: string | null
     jwt: string | null
+    user_uuid: string | null
     user_id: string | null
   }
 
@@ -18398,6 +18400,7 @@ export namespace Prisma {
     updatedAt: Date | null
     uuid: string | null
     jwt: string | null
+    user_uuid: string | null
     user_id: string | null
   }
 
@@ -18407,6 +18410,7 @@ export namespace Prisma {
     updatedAt: number
     uuid: number
     jwt: number
+    user_uuid: number
     user_id: number
     _all: number
   }
@@ -18418,6 +18422,7 @@ export namespace Prisma {
     updatedAt?: true
     uuid?: true
     jwt?: true
+    user_uuid?: true
     user_id?: true
   }
 
@@ -18427,6 +18432,7 @@ export namespace Prisma {
     updatedAt?: true
     uuid?: true
     jwt?: true
+    user_uuid?: true
     user_id?: true
   }
 
@@ -18436,6 +18442,7 @@ export namespace Prisma {
     updatedAt?: true
     uuid?: true
     jwt?: true
+    user_uuid?: true
     user_id?: true
     _all?: true
   }
@@ -18519,6 +18526,7 @@ export namespace Prisma {
     updatedAt: Date | null
     uuid: string
     jwt: string
+    user_uuid: string
     user_id: string
     _count: SessionsCountAggregateOutputType | null
     _min: SessionsMinAggregateOutputType | null
@@ -18545,6 +18553,7 @@ export namespace Prisma {
     updatedAt?: boolean
     uuid?: boolean
     jwt?: boolean
+    user_uuid?: boolean
     user_id?: boolean
     user?: boolean | usersArgs
   }
@@ -21705,6 +21714,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     uuid: 'uuid',
     jwt: 'jwt',
+    user_uuid: 'user_uuid',
     user_id: 'user_id'
   };
 
@@ -22820,6 +22830,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter | Date | string | null
     uuid?: StringFilter | string
     jwt?: StringFilter | string
+    user_uuid?: StringFilter | string
     user_id?: StringFilter | string
     user?: XOR<UsersRelationFilter, usersWhereInput>
   }
@@ -22830,6 +22841,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     uuid?: SortOrder
     jwt?: SortOrder
+    user_uuid?: SortOrder
     user_id?: SortOrder
     user?: usersOrderByWithRelationInput
   }
@@ -22845,6 +22857,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     uuid?: SortOrder
     jwt?: SortOrder
+    user_uuid?: SortOrder
     user_id?: SortOrder
     _count?: sessionsCountOrderByAggregateInput
     _max?: sessionsMaxOrderByAggregateInput
@@ -22860,6 +22873,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableWithAggregatesFilter | Date | string | null
     uuid?: StringWithAggregatesFilter | string
     jwt?: StringWithAggregatesFilter | string
+    user_uuid?: StringWithAggregatesFilter | string
     user_id?: StringWithAggregatesFilter | string
   }
 
@@ -24264,6 +24278,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     uuid?: string
     jwt: string
+    user_uuid: string
     user: usersCreateNestedOneWithoutSessionInput
   }
 
@@ -24273,6 +24288,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     uuid?: string
     jwt: string
+    user_uuid: string
     user_id: string
   }
 
@@ -24281,6 +24297,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     uuid?: StringFieldUpdateOperationsInput | string
     jwt?: StringFieldUpdateOperationsInput | string
+    user_uuid?: StringFieldUpdateOperationsInput | string
     user?: usersUpdateOneRequiredWithoutSessionNestedInput
   }
 
@@ -24289,6 +24306,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     uuid?: StringFieldUpdateOperationsInput | string
     jwt?: StringFieldUpdateOperationsInput | string
+    user_uuid?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
   }
 
@@ -24298,6 +24316,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     uuid?: string
     jwt: string
+    user_uuid: string
     user_id: string
   }
 
@@ -24306,6 +24325,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     uuid?: StringFieldUpdateOperationsInput | string
     jwt?: StringFieldUpdateOperationsInput | string
+    user_uuid?: StringFieldUpdateOperationsInput | string
   }
 
   export type sessionsUncheckedUpdateManyInput = {
@@ -24313,6 +24333,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     uuid?: StringFieldUpdateOperationsInput | string
     jwt?: StringFieldUpdateOperationsInput | string
+    user_uuid?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
   }
 
@@ -25400,6 +25421,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     uuid?: SortOrder
     jwt?: SortOrder
+    user_uuid?: SortOrder
     user_id?: SortOrder
   }
 
@@ -25409,6 +25431,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     uuid?: SortOrder
     jwt?: SortOrder
+    user_uuid?: SortOrder
     user_id?: SortOrder
   }
 
@@ -25418,6 +25441,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     uuid?: SortOrder
     jwt?: SortOrder
+    user_uuid?: SortOrder
     user_id?: SortOrder
   }
 
@@ -28812,6 +28836,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     uuid?: string
     jwt: string
+    user_uuid: string
   }
 
   export type sessionsUncheckedCreateWithoutUserInput = {
@@ -28820,6 +28845,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     uuid?: string
     jwt: string
+    user_uuid: string
   }
 
   export type sessionsCreateOrConnectWithoutUserInput = {
@@ -29070,6 +29096,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter | Date | string | null
     uuid?: StringFilter | string
     jwt?: StringFilter | string
+    user_uuid?: StringFilter | string
     user_id?: StringFilter | string
   }
 
@@ -31597,6 +31624,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     uuid?: string
     jwt: string
+    user_uuid: string
   }
 
   export type locationsUpdateWithoutUsersInput = {
@@ -31812,6 +31840,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     uuid?: StringFieldUpdateOperationsInput | string
     jwt?: StringFieldUpdateOperationsInput | string
+    user_uuid?: StringFieldUpdateOperationsInput | string
   }
 
   export type sessionsUncheckedUpdateWithoutUserInput = {
@@ -31819,6 +31848,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     uuid?: StringFieldUpdateOperationsInput | string
     jwt?: StringFieldUpdateOperationsInput | string
+    user_uuid?: StringFieldUpdateOperationsInput | string
   }
 
   export type sessionsUncheckedUpdateManyWithoutSessionInput = {
@@ -31826,6 +31856,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     uuid?: StringFieldUpdateOperationsInput | string
     jwt?: StringFieldUpdateOperationsInput | string
+    user_uuid?: StringFieldUpdateOperationsInput | string
   }
 
   export type platformsUpdateWithoutOrganizationsInput = {
