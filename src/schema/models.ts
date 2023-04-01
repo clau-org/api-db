@@ -1,0 +1,1 @@
+export { PrismaClient } from "./generated/client/deno/edge.ts";
