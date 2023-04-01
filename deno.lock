@@ -1,9 +1,9 @@
 {
   "version": "2",
   "remote": {
-    "https://raw.githubusercontent.com/clau-org/api-model/main/src/schema/generated/client/deno/edge.js": "4f4af491f4661fd4282516cf9861d6e8656c01bbc345a2490753e42b95382578",
+    "https://raw.githubusercontent.com/clau-org/api-model/main/src/schema/generated/client/deno/edge.js": "07559dbb913be9a1314e26e4c248477bef50b66c9fb135930dae8b67e03948c4",
     "https://raw.githubusercontent.com/clau-org/api-model/main/src/schema/generated/client/deno/edge.ts": "5eb8d96bc2ad5434cd3dc856c56c3493fcd41b4e4fd3da30bbe7b6b3f3f92597",
-    "https://raw.githubusercontent.com/clau-org/api-model/main/src/schema/generated/client/deno/index.d.ts": "9ad11966f5ab2e69f0269f5dd8fa261aa1e63965ae7e61f1f8a2cf0b498b3600",
+    "https://raw.githubusercontent.com/clau-org/api-model/main/src/schema/generated/client/deno/index.d.ts": "d7e3b881b4eee0020eb8fc2fc09a4427cc87a6161691ec81b5b32d1845fdef6c",
     "https://raw.githubusercontent.com/clau-org/api-model/main/src/schema/generated/client/deno/polyfill.js": "b1af42feb6a95724265331ec1007fef4f0fcee09d238c09fa3aa2d4d83b025c6",
     "https://raw.githubusercontent.com/clau-org/api-model/main/src/schema/generated/client/runtime/edge-esm.js": "a295e0705388d76e55935d34b5482da66b211daa4e4f05c1a3945bc0a53c6c89",
     "https://raw.githubusercontent.com/clau-org/api-model/main/src/schema/generated/client/runtime/index.d.ts": "b1642600d52b3fa1309d14de4713691af8a9aa11ec3f1ac9cfeea6b7611b22ab",

@@ -1,1 +1,1 @@
-export { PrismaClient } from "./generated/client/deno/edge.ts";
+export { PrismaClient as DBModels } from "./generated/client/deno/edge.ts";
