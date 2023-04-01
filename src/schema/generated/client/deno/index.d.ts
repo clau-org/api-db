@@ -279,10 +279,10 @@ export type images = {
 }
 
 /**
- * Model test
+ * Model ClauTest
  * 
  */
-export type test = {
+export type ClauTest = {
   id: string
   createdAt: Date | null
   updatedAt: Date | null
@@ -569,14 +569,14 @@ export class PrismaClient<
   get images(): Prisma.imagesDelegate<GlobalReject>;
 
   /**
-   * `prisma.test`: Exposes CRUD operations for the **test** model.
+   * `prisma.clauTest`: Exposes CRUD operations for the **ClauTest** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Tests
-    * const tests = await prisma.test.findMany()
+    * // Fetch zero or more ClauTests
+    * const clauTests = await prisma.clauTest.findMany()
     * ```
     */
-  get test(): Prisma.testDelegate<GlobalReject>;
+  get clauTest(): Prisma.ClauTestDelegate<GlobalReject>;
 }
 
 export namespace Prisma {
@@ -1062,7 +1062,7 @@ export namespace Prisma {
     items: 'items',
     locations: 'locations',
     images: 'images',
-    test: 'test'
+    ClauTest: 'ClauTest'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -19495,31 +19495,31 @@ export namespace Prisma {
 
 
   /**
-   * Model test
+   * Model ClauTest
    */
 
 
-  export type AggregateTest = {
-    _count: TestCountAggregateOutputType | null
-    _min: TestMinAggregateOutputType | null
-    _max: TestMaxAggregateOutputType | null
+  export type AggregateClauTest = {
+    _count: ClauTestCountAggregateOutputType | null
+    _min: ClauTestMinAggregateOutputType | null
+    _max: ClauTestMaxAggregateOutputType | null
   }
 
-  export type TestMinAggregateOutputType = {
+  export type ClauTestMinAggregateOutputType = {
     id: string | null
     createdAt: Date | null
     updatedAt: Date | null
     uuid: string | null
   }
 
-  export type TestMaxAggregateOutputType = {
+  export type ClauTestMaxAggregateOutputType = {
     id: string | null
     createdAt: Date | null
     updatedAt: Date | null
     uuid: string | null
   }
 
-  export type TestCountAggregateOutputType = {
+  export type ClauTestCountAggregateOutputType = {
     id: number
     createdAt: number
     updatedAt: number
@@ -19528,21 +19528,21 @@ export namespace Prisma {
   }
 
 
-  export type TestMinAggregateInputType = {
+  export type ClauTestMinAggregateInputType = {
     id?: true
     createdAt?: true
     updatedAt?: true
     uuid?: true
   }
 
-  export type TestMaxAggregateInputType = {
+  export type ClauTestMaxAggregateInputType = {
     id?: true
     createdAt?: true
     updatedAt?: true
     uuid?: true
   }
 
-  export type TestCountAggregateInputType = {
+  export type ClauTestCountAggregateInputType = {
     id?: true
     createdAt?: true
     updatedAt?: true
@@ -19550,104 +19550,104 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type TestAggregateArgs = {
+  export type ClauTestAggregateArgs = {
     /**
-     * Filter which test to aggregate.
+     * Filter which ClauTest to aggregate.
      */
-    where?: testWhereInput
+    where?: ClauTestWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of tests to fetch.
+     * Determine the order of ClauTests to fetch.
      */
-    orderBy?: Enumerable<testOrderByWithRelationInput>
+    orderBy?: Enumerable<ClauTestOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: testWhereUniqueInput
+    cursor?: ClauTestWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` tests from the position of the cursor.
+     * Take `±n` ClauTests from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` tests.
+     * Skip the first `n` ClauTests.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned tests
+     * Count returned ClauTests
     **/
-    _count?: true | TestCountAggregateInputType
+    _count?: true | ClauTestCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: TestMinAggregateInputType
+    _min?: ClauTestMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: TestMaxAggregateInputType
+    _max?: ClauTestMaxAggregateInputType
   }
 
-  export type GetTestAggregateType<T extends TestAggregateArgs> = {
-        [P in keyof T & keyof AggregateTest]: P extends '_count' | 'count'
+  export type GetClauTestAggregateType<T extends ClauTestAggregateArgs> = {
+        [P in keyof T & keyof AggregateClauTest]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateTest[P]>
-      : GetScalarType<T[P], AggregateTest[P]>
+        : GetScalarType<T[P], AggregateClauTest[P]>
+      : GetScalarType<T[P], AggregateClauTest[P]>
   }
 
 
 
 
-  export type TestGroupByArgs = {
-    where?: testWhereInput
-    orderBy?: Enumerable<testOrderByWithAggregationInput>
-    by: TestScalarFieldEnum[]
-    having?: testScalarWhereWithAggregatesInput
+  export type ClauTestGroupByArgs = {
+    where?: ClauTestWhereInput
+    orderBy?: Enumerable<ClauTestOrderByWithAggregationInput>
+    by: ClauTestScalarFieldEnum[]
+    having?: ClauTestScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: TestCountAggregateInputType | true
-    _min?: TestMinAggregateInputType
-    _max?: TestMaxAggregateInputType
+    _count?: ClauTestCountAggregateInputType | true
+    _min?: ClauTestMinAggregateInputType
+    _max?: ClauTestMaxAggregateInputType
   }
 
 
-  export type TestGroupByOutputType = {
+  export type ClauTestGroupByOutputType = {
     id: string
     createdAt: Date | null
     updatedAt: Date | null
     uuid: string
-    _count: TestCountAggregateOutputType | null
-    _min: TestMinAggregateOutputType | null
-    _max: TestMaxAggregateOutputType | null
+    _count: ClauTestCountAggregateOutputType | null
+    _min: ClauTestMinAggregateOutputType | null
+    _max: ClauTestMaxAggregateOutputType | null
   }
 
-  type GetTestGroupByPayload<T extends TestGroupByArgs> = Prisma.PrismaPromise<
+  type GetClauTestGroupByPayload<T extends ClauTestGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickArray<TestGroupByOutputType, T['by']> &
+      PickArray<ClauTestGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof TestGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ClauTestGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], TestGroupByOutputType[P]>
-            : GetScalarType<T[P], TestGroupByOutputType[P]>
+              : GetScalarType<T[P], ClauTestGroupByOutputType[P]>
+            : GetScalarType<T[P], ClauTestGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type testSelect = {
+  export type ClauTestSelect = {
     id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -19655,167 +19655,167 @@ export namespace Prisma {
   }
 
 
-  export type testGetPayload<S extends boolean | null | undefined | testArgs> =
+  export type ClauTestGetPayload<S extends boolean | null | undefined | ClauTestArgs> =
     S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
-    S extends true ? test :
+    S extends true ? ClauTest :
     S extends undefined ? never :
-    S extends { include: any } & (testArgs | testFindManyArgs)
-    ? test 
-    : S extends { select: any } & (testArgs | testFindManyArgs)
+    S extends { include: any } & (ClauTestArgs | ClauTestFindManyArgs)
+    ? ClauTest 
+    : S extends { select: any } & (ClauTestArgs | ClauTestFindManyArgs)
       ? {
     [P in TruthyKeys<S['select']>]:
-    P extends keyof test ? test[P] : never
+    P extends keyof ClauTest ? ClauTest[P] : never
   } 
-      : test
+      : ClauTest
 
 
-  type testCountArgs = 
-    Omit<testFindManyArgs, 'select' | 'include'> & {
-      select?: TestCountAggregateInputType | true
+  type ClauTestCountArgs = 
+    Omit<ClauTestFindManyArgs, 'select' | 'include'> & {
+      select?: ClauTestCountAggregateInputType | true
     }
 
-  export interface testDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+  export interface ClauTestDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
 
     /**
-     * Find zero or one Test that matches the filter.
-     * @param {testFindUniqueArgs} args - Arguments to find a Test
+     * Find zero or one ClauTest that matches the filter.
+     * @param {ClauTestFindUniqueArgs} args - Arguments to find a ClauTest
      * @example
-     * // Get one Test
-     * const test = await prisma.test.findUnique({
+     * // Get one ClauTest
+     * const clauTest = await prisma.clauTest.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends testFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, testFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'test'> extends True ? Prisma__testClient<testGetPayload<T>> : Prisma__testClient<testGetPayload<T> | null, null>
+    findUnique<T extends ClauTestFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, ClauTestFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'ClauTest'> extends True ? Prisma__ClauTestClient<ClauTestGetPayload<T>> : Prisma__ClauTestClient<ClauTestGetPayload<T> | null, null>
 
     /**
-     * Find one Test that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one ClauTest that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {testFindUniqueOrThrowArgs} args - Arguments to find a Test
+     * @param {ClauTestFindUniqueOrThrowArgs} args - Arguments to find a ClauTest
      * @example
-     * // Get one Test
-     * const test = await prisma.test.findUniqueOrThrow({
+     * // Get one ClauTest
+     * const clauTest = await prisma.clauTest.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends testFindUniqueOrThrowArgs>(
-      args?: SelectSubset<T, testFindUniqueOrThrowArgs>
-    ): Prisma__testClient<testGetPayload<T>>
+    findUniqueOrThrow<T extends ClauTestFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, ClauTestFindUniqueOrThrowArgs>
+    ): Prisma__ClauTestClient<ClauTestGetPayload<T>>
 
     /**
-     * Find the first Test that matches the filter.
+     * Find the first ClauTest that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {testFindFirstArgs} args - Arguments to find a Test
+     * @param {ClauTestFindFirstArgs} args - Arguments to find a ClauTest
      * @example
-     * // Get one Test
-     * const test = await prisma.test.findFirst({
+     * // Get one ClauTest
+     * const clauTest = await prisma.clauTest.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends testFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, testFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'test'> extends True ? Prisma__testClient<testGetPayload<T>> : Prisma__testClient<testGetPayload<T> | null, null>
+    findFirst<T extends ClauTestFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, ClauTestFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'ClauTest'> extends True ? Prisma__ClauTestClient<ClauTestGetPayload<T>> : Prisma__ClauTestClient<ClauTestGetPayload<T> | null, null>
 
     /**
-     * Find the first Test that matches the filter or
+     * Find the first ClauTest that matches the filter or
      * throw `NotFoundError` if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {testFindFirstOrThrowArgs} args - Arguments to find a Test
+     * @param {ClauTestFindFirstOrThrowArgs} args - Arguments to find a ClauTest
      * @example
-     * // Get one Test
-     * const test = await prisma.test.findFirstOrThrow({
+     * // Get one ClauTest
+     * const clauTest = await prisma.clauTest.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends testFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, testFindFirstOrThrowArgs>
-    ): Prisma__testClient<testGetPayload<T>>
+    findFirstOrThrow<T extends ClauTestFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, ClauTestFindFirstOrThrowArgs>
+    ): Prisma__ClauTestClient<ClauTestGetPayload<T>>
 
     /**
-     * Find zero or more Tests that matches the filter.
+     * Find zero or more ClauTests that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {testFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {ClauTestFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Tests
-     * const tests = await prisma.test.findMany()
+     * // Get all ClauTests
+     * const clauTests = await prisma.clauTest.findMany()
      * 
-     * // Get first 10 Tests
-     * const tests = await prisma.test.findMany({ take: 10 })
+     * // Get first 10 ClauTests
+     * const clauTests = await prisma.clauTest.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const testWithIdOnly = await prisma.test.findMany({ select: { id: true } })
+     * const clauTestWithIdOnly = await prisma.clauTest.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends testFindManyArgs>(
-      args?: SelectSubset<T, testFindManyArgs>
-    ): Prisma.PrismaPromise<Array<testGetPayload<T>>>
+    findMany<T extends ClauTestFindManyArgs>(
+      args?: SelectSubset<T, ClauTestFindManyArgs>
+    ): Prisma.PrismaPromise<Array<ClauTestGetPayload<T>>>
 
     /**
-     * Create a Test.
-     * @param {testCreateArgs} args - Arguments to create a Test.
+     * Create a ClauTest.
+     * @param {ClauTestCreateArgs} args - Arguments to create a ClauTest.
      * @example
-     * // Create one Test
-     * const Test = await prisma.test.create({
+     * // Create one ClauTest
+     * const ClauTest = await prisma.clauTest.create({
      *   data: {
-     *     // ... data to create a Test
+     *     // ... data to create a ClauTest
      *   }
      * })
      * 
     **/
-    create<T extends testCreateArgs>(
-      args: SelectSubset<T, testCreateArgs>
-    ): Prisma__testClient<testGetPayload<T>>
+    create<T extends ClauTestCreateArgs>(
+      args: SelectSubset<T, ClauTestCreateArgs>
+    ): Prisma__ClauTestClient<ClauTestGetPayload<T>>
 
     /**
-     * Create many Tests.
-     *     @param {testCreateManyArgs} args - Arguments to create many Tests.
+     * Create many ClauTests.
+     *     @param {ClauTestCreateManyArgs} args - Arguments to create many ClauTests.
      *     @example
-     *     // Create many Tests
-     *     const test = await prisma.test.createMany({
+     *     // Create many ClauTests
+     *     const clauTest = await prisma.clauTest.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends testCreateManyArgs>(
-      args?: SelectSubset<T, testCreateManyArgs>
+    createMany<T extends ClauTestCreateManyArgs>(
+      args?: SelectSubset<T, ClauTestCreateManyArgs>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Test.
-     * @param {testDeleteArgs} args - Arguments to delete one Test.
+     * Delete a ClauTest.
+     * @param {ClauTestDeleteArgs} args - Arguments to delete one ClauTest.
      * @example
-     * // Delete one Test
-     * const Test = await prisma.test.delete({
+     * // Delete one ClauTest
+     * const ClauTest = await prisma.clauTest.delete({
      *   where: {
-     *     // ... filter to delete one Test
+     *     // ... filter to delete one ClauTest
      *   }
      * })
      * 
     **/
-    delete<T extends testDeleteArgs>(
-      args: SelectSubset<T, testDeleteArgs>
-    ): Prisma__testClient<testGetPayload<T>>
+    delete<T extends ClauTestDeleteArgs>(
+      args: SelectSubset<T, ClauTestDeleteArgs>
+    ): Prisma__ClauTestClient<ClauTestGetPayload<T>>
 
     /**
-     * Update one Test.
-     * @param {testUpdateArgs} args - Arguments to update one Test.
+     * Update one ClauTest.
+     * @param {ClauTestUpdateArgs} args - Arguments to update one ClauTest.
      * @example
-     * // Update one Test
-     * const test = await prisma.test.update({
+     * // Update one ClauTest
+     * const clauTest = await prisma.clauTest.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -19825,34 +19825,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends testUpdateArgs>(
-      args: SelectSubset<T, testUpdateArgs>
-    ): Prisma__testClient<testGetPayload<T>>
+    update<T extends ClauTestUpdateArgs>(
+      args: SelectSubset<T, ClauTestUpdateArgs>
+    ): Prisma__ClauTestClient<ClauTestGetPayload<T>>
 
     /**
-     * Delete zero or more Tests.
-     * @param {testDeleteManyArgs} args - Arguments to filter Tests to delete.
+     * Delete zero or more ClauTests.
+     * @param {ClauTestDeleteManyArgs} args - Arguments to filter ClauTests to delete.
      * @example
-     * // Delete a few Tests
-     * const { count } = await prisma.test.deleteMany({
+     * // Delete a few ClauTests
+     * const { count } = await prisma.clauTest.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends testDeleteManyArgs>(
-      args?: SelectSubset<T, testDeleteManyArgs>
+    deleteMany<T extends ClauTestDeleteManyArgs>(
+      args?: SelectSubset<T, ClauTestDeleteManyArgs>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Tests.
+     * Update zero or more ClauTests.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {testUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ClauTestUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Tests
-     * const test = await prisma.test.updateMany({
+     * // Update many ClauTests
+     * const clauTest = await prisma.clauTest.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -19862,48 +19862,48 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends testUpdateManyArgs>(
-      args: SelectSubset<T, testUpdateManyArgs>
+    updateMany<T extends ClauTestUpdateManyArgs>(
+      args: SelectSubset<T, ClauTestUpdateManyArgs>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Test.
-     * @param {testUpsertArgs} args - Arguments to update or create a Test.
+     * Create or update one ClauTest.
+     * @param {ClauTestUpsertArgs} args - Arguments to update or create a ClauTest.
      * @example
-     * // Update or create a Test
-     * const test = await prisma.test.upsert({
+     * // Update or create a ClauTest
+     * const clauTest = await prisma.clauTest.upsert({
      *   create: {
-     *     // ... data to create a Test
+     *     // ... data to create a ClauTest
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Test we want to update
+     *     // ... the filter for the ClauTest we want to update
      *   }
      * })
     **/
-    upsert<T extends testUpsertArgs>(
-      args: SelectSubset<T, testUpsertArgs>
-    ): Prisma__testClient<testGetPayload<T>>
+    upsert<T extends ClauTestUpsertArgs>(
+      args: SelectSubset<T, ClauTestUpsertArgs>
+    ): Prisma__ClauTestClient<ClauTestGetPayload<T>>
 
     /**
-     * Find zero or more Tests that matches the filter.
-     * @param {testFindRawArgs} args - Select which filters you would like to apply.
+     * Find zero or more ClauTests that matches the filter.
+     * @param {ClauTestFindRawArgs} args - Select which filters you would like to apply.
      * @example
-     * const test = await prisma.test.findRaw({
+     * const clauTest = await prisma.clauTest.findRaw({
      *   filter: { age: { $gt: 25 } } 
      * })
     **/
     findRaw(
-      args?: testFindRawArgs
+      args?: ClauTestFindRawArgs
     ): Prisma.PrismaPromise<JsonObject>
 
     /**
-     * Perform aggregation operations on a Test.
-     * @param {testAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * Perform aggregation operations on a ClauTest.
+     * @param {ClauTestAggregateRawArgs} args - Select which aggregations you would like to apply.
      * @example
-     * const test = await prisma.test.aggregateRaw({
+     * const clauTest = await prisma.clauTest.aggregateRaw({
      *   pipeline: [
      *     { $match: { status: "registered" } },
      *     { $group: { _id: "$country", total: { $sum: 1 } } }
@@ -19911,37 +19911,37 @@ export namespace Prisma {
      * })
     **/
     aggregateRaw(
-      args?: testAggregateRawArgs
+      args?: ClauTestAggregateRawArgs
     ): Prisma.PrismaPromise<JsonObject>
 
     /**
-     * Count the number of Tests.
+     * Count the number of ClauTests.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {testCountArgs} args - Arguments to filter Tests to count.
+     * @param {ClauTestCountArgs} args - Arguments to filter ClauTests to count.
      * @example
-     * // Count the number of Tests
-     * const count = await prisma.test.count({
+     * // Count the number of ClauTests
+     * const count = await prisma.clauTest.count({
      *   where: {
-     *     // ... the filter for the Tests we want to count
+     *     // ... the filter for the ClauTests we want to count
      *   }
      * })
     **/
-    count<T extends testCountArgs>(
-      args?: Subset<T, testCountArgs>,
+    count<T extends ClauTestCountArgs>(
+      args?: Subset<T, ClauTestCountArgs>,
     ): Prisma.PrismaPromise<
       T extends _Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], TestCountAggregateOutputType>
+          : GetScalarType<T['select'], ClauTestCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Test.
+     * Allows you to perform aggregations operations on a ClauTest.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ClauTestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -19961,13 +19961,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends TestAggregateArgs>(args: Subset<T, TestAggregateArgs>): Prisma.PrismaPromise<GetTestAggregateType<T>>
+    aggregate<T extends ClauTestAggregateArgs>(args: Subset<T, ClauTestAggregateArgs>): Prisma.PrismaPromise<GetClauTestAggregateType<T>>
 
     /**
-     * Group by Test.
+     * Group by ClauTest.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestGroupByArgs} args - Group by arguments.
+     * @param {ClauTestGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -19982,14 +19982,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends TestGroupByArgs,
+      T extends ClauTestGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TestGroupByArgs['orderBy'] }
-        : { orderBy?: TestGroupByArgs['orderBy'] },
+        ? { orderBy: ClauTestGroupByArgs['orderBy'] }
+        : { orderBy?: ClauTestGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends TupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -20038,17 +20038,17 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, TestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ClauTestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClauTestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for test.
+   * The delegate class that acts as a "Promise-like" for ClauTest.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export class Prisma__testClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+  export class Prisma__ClauTestClient<T, Null = never> implements Prisma.PrismaPromise<T> {
     private readonly _dmmf;
     private readonly _queryType;
     private readonly _rootField;
@@ -20092,23 +20092,23 @@ export namespace Prisma {
   // Custom InputTypes
 
   /**
-   * test base type for findUnique actions
+   * ClauTest base type for findUnique actions
    */
-  export type testFindUniqueArgsBase = {
+  export type ClauTestFindUniqueArgsBase = {
     /**
-     * Select specific fields to fetch from the test
+     * Select specific fields to fetch from the ClauTest
      */
-    select?: testSelect | null
+    select?: ClauTestSelect | null
     /**
-     * Filter, which test to fetch.
+     * Filter, which ClauTest to fetch.
      */
-    where: testWhereUniqueInput
+    where: ClauTestWhereUniqueInput
   }
 
   /**
-   * test findUnique
+   * ClauTest findUnique
    */
-  export interface testFindUniqueArgs extends testFindUniqueArgsBase {
+  export interface ClauTestFindUniqueArgs extends ClauTestFindUniqueArgsBase {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
@@ -20118,68 +20118,68 @@ export namespace Prisma {
       
 
   /**
-   * test findUniqueOrThrow
+   * ClauTest findUniqueOrThrow
    */
-  export type testFindUniqueOrThrowArgs = {
+  export type ClauTestFindUniqueOrThrowArgs = {
     /**
-     * Select specific fields to fetch from the test
+     * Select specific fields to fetch from the ClauTest
      */
-    select?: testSelect | null
+    select?: ClauTestSelect | null
     /**
-     * Filter, which test to fetch.
+     * Filter, which ClauTest to fetch.
      */
-    where: testWhereUniqueInput
+    where: ClauTestWhereUniqueInput
   }
 
 
   /**
-   * test base type for findFirst actions
+   * ClauTest base type for findFirst actions
    */
-  export type testFindFirstArgsBase = {
+  export type ClauTestFindFirstArgsBase = {
     /**
-     * Select specific fields to fetch from the test
+     * Select specific fields to fetch from the ClauTest
      */
-    select?: testSelect | null
+    select?: ClauTestSelect | null
     /**
-     * Filter, which test to fetch.
+     * Filter, which ClauTest to fetch.
      */
-    where?: testWhereInput
+    where?: ClauTestWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of tests to fetch.
+     * Determine the order of ClauTests to fetch.
      */
-    orderBy?: Enumerable<testOrderByWithRelationInput>
+    orderBy?: Enumerable<ClauTestOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for tests.
+     * Sets the position for searching for ClauTests.
      */
-    cursor?: testWhereUniqueInput
+    cursor?: ClauTestWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` tests from the position of the cursor.
+     * Take `±n` ClauTests from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` tests.
+     * Skip the first `n` ClauTests.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of tests.
+     * Filter by unique combinations of ClauTests.
      */
-    distinct?: Enumerable<TestScalarFieldEnum>
+    distinct?: Enumerable<ClauTestScalarFieldEnum>
   }
 
   /**
-   * test findFirst
+   * ClauTest findFirst
    */
-  export interface testFindFirstArgs extends testFindFirstArgsBase {
+  export interface ClauTestFindFirstArgs extends ClauTestFindFirstArgsBase {
    /**
     * Throw an Error if query returns no results
     * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
@@ -20189,203 +20189,203 @@ export namespace Prisma {
       
 
   /**
-   * test findFirstOrThrow
+   * ClauTest findFirstOrThrow
    */
-  export type testFindFirstOrThrowArgs = {
+  export type ClauTestFindFirstOrThrowArgs = {
     /**
-     * Select specific fields to fetch from the test
+     * Select specific fields to fetch from the ClauTest
      */
-    select?: testSelect | null
+    select?: ClauTestSelect | null
     /**
-     * Filter, which test to fetch.
+     * Filter, which ClauTest to fetch.
      */
-    where?: testWhereInput
+    where?: ClauTestWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of tests to fetch.
+     * Determine the order of ClauTests to fetch.
      */
-    orderBy?: Enumerable<testOrderByWithRelationInput>
+    orderBy?: Enumerable<ClauTestOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for tests.
+     * Sets the position for searching for ClauTests.
      */
-    cursor?: testWhereUniqueInput
+    cursor?: ClauTestWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` tests from the position of the cursor.
+     * Take `±n` ClauTests from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` tests.
+     * Skip the first `n` ClauTests.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of tests.
+     * Filter by unique combinations of ClauTests.
      */
-    distinct?: Enumerable<TestScalarFieldEnum>
+    distinct?: Enumerable<ClauTestScalarFieldEnum>
   }
 
 
   /**
-   * test findMany
+   * ClauTest findMany
    */
-  export type testFindManyArgs = {
+  export type ClauTestFindManyArgs = {
     /**
-     * Select specific fields to fetch from the test
+     * Select specific fields to fetch from the ClauTest
      */
-    select?: testSelect | null
+    select?: ClauTestSelect | null
     /**
-     * Filter, which tests to fetch.
+     * Filter, which ClauTests to fetch.
      */
-    where?: testWhereInput
+    where?: ClauTestWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of tests to fetch.
+     * Determine the order of ClauTests to fetch.
      */
-    orderBy?: Enumerable<testOrderByWithRelationInput>
+    orderBy?: Enumerable<ClauTestOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing tests.
+     * Sets the position for listing ClauTests.
      */
-    cursor?: testWhereUniqueInput
+    cursor?: ClauTestWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` tests from the position of the cursor.
+     * Take `±n` ClauTests from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` tests.
+     * Skip the first `n` ClauTests.
      */
     skip?: number
-    distinct?: Enumerable<TestScalarFieldEnum>
+    distinct?: Enumerable<ClauTestScalarFieldEnum>
   }
 
 
   /**
-   * test create
+   * ClauTest create
    */
-  export type testCreateArgs = {
+  export type ClauTestCreateArgs = {
     /**
-     * Select specific fields to fetch from the test
+     * Select specific fields to fetch from the ClauTest
      */
-    select?: testSelect | null
+    select?: ClauTestSelect | null
     /**
-     * The data needed to create a test.
+     * The data needed to create a ClauTest.
      */
-    data: XOR<testCreateInput, testUncheckedCreateInput>
+    data: XOR<ClauTestCreateInput, ClauTestUncheckedCreateInput>
   }
 
 
   /**
-   * test createMany
+   * ClauTest createMany
    */
-  export type testCreateManyArgs = {
+  export type ClauTestCreateManyArgs = {
     /**
-     * The data used to create many tests.
+     * The data used to create many ClauTests.
      */
-    data: Enumerable<testCreateManyInput>
+    data: Enumerable<ClauTestCreateManyInput>
   }
 
 
   /**
-   * test update
+   * ClauTest update
    */
-  export type testUpdateArgs = {
+  export type ClauTestUpdateArgs = {
     /**
-     * Select specific fields to fetch from the test
+     * Select specific fields to fetch from the ClauTest
      */
-    select?: testSelect | null
+    select?: ClauTestSelect | null
     /**
-     * The data needed to update a test.
+     * The data needed to update a ClauTest.
      */
-    data: XOR<testUpdateInput, testUncheckedUpdateInput>
+    data: XOR<ClauTestUpdateInput, ClauTestUncheckedUpdateInput>
     /**
-     * Choose, which test to update.
+     * Choose, which ClauTest to update.
      */
-    where: testWhereUniqueInput
+    where: ClauTestWhereUniqueInput
   }
 
 
   /**
-   * test updateMany
+   * ClauTest updateMany
    */
-  export type testUpdateManyArgs = {
+  export type ClauTestUpdateManyArgs = {
     /**
-     * The data used to update tests.
+     * The data used to update ClauTests.
      */
-    data: XOR<testUpdateManyMutationInput, testUncheckedUpdateManyInput>
+    data: XOR<ClauTestUpdateManyMutationInput, ClauTestUncheckedUpdateManyInput>
     /**
-     * Filter which tests to update
+     * Filter which ClauTests to update
      */
-    where?: testWhereInput
+    where?: ClauTestWhereInput
   }
 
 
   /**
-   * test upsert
+   * ClauTest upsert
    */
-  export type testUpsertArgs = {
+  export type ClauTestUpsertArgs = {
     /**
-     * Select specific fields to fetch from the test
+     * Select specific fields to fetch from the ClauTest
      */
-    select?: testSelect | null
+    select?: ClauTestSelect | null
     /**
-     * The filter to search for the test to update in case it exists.
+     * The filter to search for the ClauTest to update in case it exists.
      */
-    where: testWhereUniqueInput
+    where: ClauTestWhereUniqueInput
     /**
-     * In case the test found by the `where` argument doesn't exist, create a new test with this data.
+     * In case the ClauTest found by the `where` argument doesn't exist, create a new ClauTest with this data.
      */
-    create: XOR<testCreateInput, testUncheckedCreateInput>
+    create: XOR<ClauTestCreateInput, ClauTestUncheckedCreateInput>
     /**
-     * In case the test was found with the provided `where` argument, update it with this data.
+     * In case the ClauTest was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<testUpdateInput, testUncheckedUpdateInput>
+    update: XOR<ClauTestUpdateInput, ClauTestUncheckedUpdateInput>
   }
 
 
   /**
-   * test delete
+   * ClauTest delete
    */
-  export type testDeleteArgs = {
+  export type ClauTestDeleteArgs = {
     /**
-     * Select specific fields to fetch from the test
+     * Select specific fields to fetch from the ClauTest
      */
-    select?: testSelect | null
+    select?: ClauTestSelect | null
     /**
-     * Filter which test to delete.
+     * Filter which ClauTest to delete.
      */
-    where: testWhereUniqueInput
+    where: ClauTestWhereUniqueInput
   }
 
 
   /**
-   * test deleteMany
+   * ClauTest deleteMany
    */
-  export type testDeleteManyArgs = {
+  export type ClauTestDeleteManyArgs = {
     /**
-     * Filter which tests to delete
+     * Filter which ClauTests to delete
      */
-    where?: testWhereInput
+    where?: ClauTestWhereInput
   }
 
 
   /**
-   * test findRaw
+   * ClauTest findRaw
    */
-  export type testFindRawArgs = {
+  export type ClauTestFindRawArgs = {
     /**
      * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
      */
@@ -20398,9 +20398,9 @@ export namespace Prisma {
 
 
   /**
-   * test aggregateRaw
+   * ClauTest aggregateRaw
    */
-  export type testAggregateRawArgs = {
+  export type ClauTestAggregateRawArgs = {
     /**
      * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
      */
@@ -20413,13 +20413,13 @@ export namespace Prisma {
 
 
   /**
-   * test without action
+   * ClauTest without action
    */
-  export type testArgs = {
+  export type ClauTestArgs = {
     /**
-     * Select specific fields to fetch from the test
+     * Select specific fields to fetch from the ClauTest
      */
-    select?: testSelect | null
+    select?: ClauTestSelect | null
   }
 
 
@@ -20430,6 +20430,16 @@ export namespace Prisma {
 
   // Based on
   // https://github.com/microsoft/TypeScript/issues/3192#issuecomment-261720275
+
+  export const ClauTestScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    uuid: 'uuid'
+  };
+
+  export type ClauTestScalarFieldEnum = (typeof ClauTestScalarFieldEnum)[keyof typeof ClauTestScalarFieldEnum]
+
 
   export const ImagesScalarFieldEnum: {
     id: 'id',
@@ -20663,16 +20673,6 @@ export namespace Prisma {
   };
 
   export type StoresScalarFieldEnum = (typeof StoresScalarFieldEnum)[keyof typeof StoresScalarFieldEnum]
-
-
-  export const TestScalarFieldEnum: {
-    id: 'id',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    uuid: 'uuid'
-  };
-
-  export type TestScalarFieldEnum = (typeof TestScalarFieldEnum)[keyof typeof TestScalarFieldEnum]
 
 
   export const UsersScalarFieldEnum: {
@@ -21827,42 +21827,42 @@ export namespace Prisma {
     item_ids?: StringNullableListFilter
   }
 
-  export type testWhereInput = {
-    AND?: Enumerable<testWhereInput>
-    OR?: Enumerable<testWhereInput>
-    NOT?: Enumerable<testWhereInput>
+  export type ClauTestWhereInput = {
+    AND?: Enumerable<ClauTestWhereInput>
+    OR?: Enumerable<ClauTestWhereInput>
+    NOT?: Enumerable<ClauTestWhereInput>
     id?: StringFilter | string
     createdAt?: DateTimeNullableFilter | Date | string | null
     updatedAt?: DateTimeNullableFilter | Date | string | null
     uuid?: StringFilter | string
   }
 
-  export type testOrderByWithRelationInput = {
+  export type ClauTestOrderByWithRelationInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     uuid?: SortOrder
   }
 
-  export type testWhereUniqueInput = {
+  export type ClauTestWhereUniqueInput = {
     id?: string
     uuid?: string
   }
 
-  export type testOrderByWithAggregationInput = {
+  export type ClauTestOrderByWithAggregationInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     uuid?: SortOrder
-    _count?: testCountOrderByAggregateInput
-    _max?: testMaxOrderByAggregateInput
-    _min?: testMinOrderByAggregateInput
+    _count?: ClauTestCountOrderByAggregateInput
+    _max?: ClauTestMaxOrderByAggregateInput
+    _min?: ClauTestMinOrderByAggregateInput
   }
 
-  export type testScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<testScalarWhereWithAggregatesInput>
-    OR?: Enumerable<testScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<testScalarWhereWithAggregatesInput>
+  export type ClauTestScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<ClauTestScalarWhereWithAggregatesInput>
+    OR?: Enumerable<ClauTestScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<ClauTestScalarWhereWithAggregatesInput>
     id?: StringWithAggregatesFilter | string
     createdAt?: DateTimeNullableWithAggregatesFilter | Date | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter | Date | string | null
@@ -23241,46 +23241,46 @@ export namespace Prisma {
     item_ids?: imagesUpdateitem_idsInput | Enumerable<string>
   }
 
-  export type testCreateInput = {
+  export type ClauTestCreateInput = {
     id?: string
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     uuid?: string
   }
 
-  export type testUncheckedCreateInput = {
+  export type ClauTestUncheckedCreateInput = {
     id?: string
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     uuid?: string
   }
 
-  export type testUpdateInput = {
+  export type ClauTestUpdateInput = {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     uuid?: StringFieldUpdateOperationsInput | string
   }
 
-  export type testUncheckedUpdateInput = {
+  export type ClauTestUncheckedUpdateInput = {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     uuid?: StringFieldUpdateOperationsInput | string
   }
 
-  export type testCreateManyInput = {
+  export type ClauTestCreateManyInput = {
     id?: string
     createdAt?: Date | string | null
     updatedAt?: Date | string | null
     uuid?: string
   }
 
-  export type testUpdateManyMutationInput = {
+  export type ClauTestUpdateManyMutationInput = {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     uuid?: StringFieldUpdateOperationsInput | string
   }
 
-  export type testUncheckedUpdateManyInput = {
+  export type ClauTestUncheckedUpdateManyInput = {
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     uuid?: StringFieldUpdateOperationsInput | string
@@ -24252,21 +24252,21 @@ export namespace Prisma {
     clipped_url?: SortOrder
   }
 
-  export type testCountOrderByAggregateInput = {
+  export type ClauTestCountOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     uuid?: SortOrder
   }
 
-  export type testMaxOrderByAggregateInput = {
+  export type ClauTestMaxOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     uuid?: SortOrder
   }
 
-  export type testMinOrderByAggregateInput = {
+  export type ClauTestMinOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
