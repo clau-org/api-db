@@ -278,6 +278,17 @@ export type images = {
   item_ids: string[]
 }
 
+/**
+ * Model test
+ * 
+ */
+export type test = {
+  id: string
+  createdAt: Date | null
+  updatedAt: Date | null
+  uuid: string
+}
+
 
 /**
  * Enums
@@ -556,6 +567,16 @@ export class PrismaClient<
     * ```
     */
   get images(): Prisma.imagesDelegate<GlobalReject>;
+
+  /**
+   * `prisma.test`: Exposes CRUD operations for the **test** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tests
+    * const tests = await prisma.test.findMany()
+    * ```
+    */
+  get test(): Prisma.testDelegate<GlobalReject>;
 }
 
 export namespace Prisma {
@@ -1040,7 +1061,8 @@ export namespace Prisma {
     PaymentAccount: 'PaymentAccount',
     items: 'items',
     locations: 'locations',
-    images: 'images'
+    images: 'images',
+    test: 'test'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -19473,6 +19495,936 @@ export namespace Prisma {
 
 
   /**
+   * Model test
+   */
+
+
+  export type AggregateTest = {
+    _count: TestCountAggregateOutputType | null
+    _min: TestMinAggregateOutputType | null
+    _max: TestMaxAggregateOutputType | null
+  }
+
+  export type TestMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    uuid: string | null
+  }
+
+  export type TestMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    uuid: string | null
+  }
+
+  export type TestCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    uuid: number
+    _all: number
+  }
+
+
+  export type TestMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    uuid?: true
+  }
+
+  export type TestMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    uuid?: true
+  }
+
+  export type TestCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    uuid?: true
+    _all?: true
+  }
+
+  export type TestAggregateArgs = {
+    /**
+     * Filter which test to aggregate.
+     */
+    where?: testWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tests to fetch.
+     */
+    orderBy?: Enumerable<testOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: testWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned tests
+    **/
+    _count?: true | TestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TestMaxAggregateInputType
+  }
+
+  export type GetTestAggregateType<T extends TestAggregateArgs> = {
+        [P in keyof T & keyof AggregateTest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTest[P]>
+      : GetScalarType<T[P], AggregateTest[P]>
+  }
+
+
+
+
+  export type TestGroupByArgs = {
+    where?: testWhereInput
+    orderBy?: Enumerable<testOrderByWithAggregationInput>
+    by: TestScalarFieldEnum[]
+    having?: testScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TestCountAggregateInputType | true
+    _min?: TestMinAggregateInputType
+    _max?: TestMaxAggregateInputType
+  }
+
+
+  export type TestGroupByOutputType = {
+    id: string
+    createdAt: Date | null
+    updatedAt: Date | null
+    uuid: string
+    _count: TestCountAggregateOutputType | null
+    _min: TestMinAggregateOutputType | null
+    _max: TestMaxAggregateOutputType | null
+  }
+
+  type GetTestGroupByPayload<T extends TestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<TestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TestGroupByOutputType[P]>
+            : GetScalarType<T[P], TestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type testSelect = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    uuid?: boolean
+  }
+
+
+  export type testGetPayload<S extends boolean | null | undefined | testArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? test :
+    S extends undefined ? never :
+    S extends { include: any } & (testArgs | testFindManyArgs)
+    ? test 
+    : S extends { select: any } & (testArgs | testFindManyArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+    P extends keyof test ? test[P] : never
+  } 
+      : test
+
+
+  type testCountArgs = 
+    Omit<testFindManyArgs, 'select' | 'include'> & {
+      select?: TestCountAggregateInputType | true
+    }
+
+  export interface testDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+
+    /**
+     * Find zero or one Test that matches the filter.
+     * @param {testFindUniqueArgs} args - Arguments to find a Test
+     * @example
+     * // Get one Test
+     * const test = await prisma.test.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends testFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, testFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'test'> extends True ? Prisma__testClient<testGetPayload<T>> : Prisma__testClient<testGetPayload<T> | null, null>
+
+    /**
+     * Find one Test that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {testFindUniqueOrThrowArgs} args - Arguments to find a Test
+     * @example
+     * // Get one Test
+     * const test = await prisma.test.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends testFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, testFindUniqueOrThrowArgs>
+    ): Prisma__testClient<testGetPayload<T>>
+
+    /**
+     * Find the first Test that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {testFindFirstArgs} args - Arguments to find a Test
+     * @example
+     * // Get one Test
+     * const test = await prisma.test.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends testFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, testFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'test'> extends True ? Prisma__testClient<testGetPayload<T>> : Prisma__testClient<testGetPayload<T> | null, null>
+
+    /**
+     * Find the first Test that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {testFindFirstOrThrowArgs} args - Arguments to find a Test
+     * @example
+     * // Get one Test
+     * const test = await prisma.test.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends testFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, testFindFirstOrThrowArgs>
+    ): Prisma__testClient<testGetPayload<T>>
+
+    /**
+     * Find zero or more Tests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {testFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tests
+     * const tests = await prisma.test.findMany()
+     * 
+     * // Get first 10 Tests
+     * const tests = await prisma.test.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const testWithIdOnly = await prisma.test.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends testFindManyArgs>(
+      args?: SelectSubset<T, testFindManyArgs>
+    ): Prisma.PrismaPromise<Array<testGetPayload<T>>>
+
+    /**
+     * Create a Test.
+     * @param {testCreateArgs} args - Arguments to create a Test.
+     * @example
+     * // Create one Test
+     * const Test = await prisma.test.create({
+     *   data: {
+     *     // ... data to create a Test
+     *   }
+     * })
+     * 
+    **/
+    create<T extends testCreateArgs>(
+      args: SelectSubset<T, testCreateArgs>
+    ): Prisma__testClient<testGetPayload<T>>
+
+    /**
+     * Create many Tests.
+     *     @param {testCreateManyArgs} args - Arguments to create many Tests.
+     *     @example
+     *     // Create many Tests
+     *     const test = await prisma.test.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends testCreateManyArgs>(
+      args?: SelectSubset<T, testCreateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Test.
+     * @param {testDeleteArgs} args - Arguments to delete one Test.
+     * @example
+     * // Delete one Test
+     * const Test = await prisma.test.delete({
+     *   where: {
+     *     // ... filter to delete one Test
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends testDeleteArgs>(
+      args: SelectSubset<T, testDeleteArgs>
+    ): Prisma__testClient<testGetPayload<T>>
+
+    /**
+     * Update one Test.
+     * @param {testUpdateArgs} args - Arguments to update one Test.
+     * @example
+     * // Update one Test
+     * const test = await prisma.test.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends testUpdateArgs>(
+      args: SelectSubset<T, testUpdateArgs>
+    ): Prisma__testClient<testGetPayload<T>>
+
+    /**
+     * Delete zero or more Tests.
+     * @param {testDeleteManyArgs} args - Arguments to filter Tests to delete.
+     * @example
+     * // Delete a few Tests
+     * const { count } = await prisma.test.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends testDeleteManyArgs>(
+      args?: SelectSubset<T, testDeleteManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {testUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tests
+     * const test = await prisma.test.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends testUpdateManyArgs>(
+      args: SelectSubset<T, testUpdateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Test.
+     * @param {testUpsertArgs} args - Arguments to update or create a Test.
+     * @example
+     * // Update or create a Test
+     * const test = await prisma.test.upsert({
+     *   create: {
+     *     // ... data to create a Test
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Test we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends testUpsertArgs>(
+      args: SelectSubset<T, testUpsertArgs>
+    ): Prisma__testClient<testGetPayload<T>>
+
+    /**
+     * Find zero or more Tests that matches the filter.
+     * @param {testFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const test = await prisma.test.findRaw({
+     *   filter: { age: { $gt: 25 } } 
+     * })
+    **/
+    findRaw(
+      args?: testFindRawArgs
+    ): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a Test.
+     * @param {testAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const test = await prisma.test.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+    **/
+    aggregateRaw(
+      args?: testAggregateRawArgs
+    ): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Count the number of Tests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {testCountArgs} args - Arguments to filter Tests to count.
+     * @example
+     * // Count the number of Tests
+     * const count = await prisma.test.count({
+     *   where: {
+     *     // ... the filter for the Tests we want to count
+     *   }
+     * })
+    **/
+    count<T extends testCountArgs>(
+      args?: Subset<T, testCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends _Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Test.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TestAggregateArgs>(args: Subset<T, TestAggregateArgs>): Prisma.PrismaPromise<GetTestAggregateType<T>>
+
+    /**
+     * Group by Test.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TestGroupByArgs['orderBy'] }
+        : { orderBy?: TestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for test.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__testClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * test base type for findUnique actions
+   */
+  export type testFindUniqueArgsBase = {
+    /**
+     * Select specific fields to fetch from the test
+     */
+    select?: testSelect | null
+    /**
+     * Filter, which test to fetch.
+     */
+    where: testWhereUniqueInput
+  }
+
+  /**
+   * test findUnique
+   */
+  export interface testFindUniqueArgs extends testFindUniqueArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * test findUniqueOrThrow
+   */
+  export type testFindUniqueOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the test
+     */
+    select?: testSelect | null
+    /**
+     * Filter, which test to fetch.
+     */
+    where: testWhereUniqueInput
+  }
+
+
+  /**
+   * test base type for findFirst actions
+   */
+  export type testFindFirstArgsBase = {
+    /**
+     * Select specific fields to fetch from the test
+     */
+    select?: testSelect | null
+    /**
+     * Filter, which test to fetch.
+     */
+    where?: testWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tests to fetch.
+     */
+    orderBy?: Enumerable<testOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tests.
+     */
+    cursor?: testWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tests.
+     */
+    distinct?: Enumerable<TestScalarFieldEnum>
+  }
+
+  /**
+   * test findFirst
+   */
+  export interface testFindFirstArgs extends testFindFirstArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * test findFirstOrThrow
+   */
+  export type testFindFirstOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the test
+     */
+    select?: testSelect | null
+    /**
+     * Filter, which test to fetch.
+     */
+    where?: testWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tests to fetch.
+     */
+    orderBy?: Enumerable<testOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tests.
+     */
+    cursor?: testWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tests.
+     */
+    distinct?: Enumerable<TestScalarFieldEnum>
+  }
+
+
+  /**
+   * test findMany
+   */
+  export type testFindManyArgs = {
+    /**
+     * Select specific fields to fetch from the test
+     */
+    select?: testSelect | null
+    /**
+     * Filter, which tests to fetch.
+     */
+    where?: testWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tests to fetch.
+     */
+    orderBy?: Enumerable<testOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing tests.
+     */
+    cursor?: testWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tests.
+     */
+    skip?: number
+    distinct?: Enumerable<TestScalarFieldEnum>
+  }
+
+
+  /**
+   * test create
+   */
+  export type testCreateArgs = {
+    /**
+     * Select specific fields to fetch from the test
+     */
+    select?: testSelect | null
+    /**
+     * The data needed to create a test.
+     */
+    data: XOR<testCreateInput, testUncheckedCreateInput>
+  }
+
+
+  /**
+   * test createMany
+   */
+  export type testCreateManyArgs = {
+    /**
+     * The data used to create many tests.
+     */
+    data: Enumerable<testCreateManyInput>
+  }
+
+
+  /**
+   * test update
+   */
+  export type testUpdateArgs = {
+    /**
+     * Select specific fields to fetch from the test
+     */
+    select?: testSelect | null
+    /**
+     * The data needed to update a test.
+     */
+    data: XOR<testUpdateInput, testUncheckedUpdateInput>
+    /**
+     * Choose, which test to update.
+     */
+    where: testWhereUniqueInput
+  }
+
+
+  /**
+   * test updateMany
+   */
+  export type testUpdateManyArgs = {
+    /**
+     * The data used to update tests.
+     */
+    data: XOR<testUpdateManyMutationInput, testUncheckedUpdateManyInput>
+    /**
+     * Filter which tests to update
+     */
+    where?: testWhereInput
+  }
+
+
+  /**
+   * test upsert
+   */
+  export type testUpsertArgs = {
+    /**
+     * Select specific fields to fetch from the test
+     */
+    select?: testSelect | null
+    /**
+     * The filter to search for the test to update in case it exists.
+     */
+    where: testWhereUniqueInput
+    /**
+     * In case the test found by the `where` argument doesn't exist, create a new test with this data.
+     */
+    create: XOR<testCreateInput, testUncheckedCreateInput>
+    /**
+     * In case the test was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<testUpdateInput, testUncheckedUpdateInput>
+  }
+
+
+  /**
+   * test delete
+   */
+  export type testDeleteArgs = {
+    /**
+     * Select specific fields to fetch from the test
+     */
+    select?: testSelect | null
+    /**
+     * Filter which test to delete.
+     */
+    where: testWhereUniqueInput
+  }
+
+
+  /**
+   * test deleteMany
+   */
+  export type testDeleteManyArgs = {
+    /**
+     * Filter which tests to delete
+     */
+    where?: testWhereInput
+  }
+
+
+  /**
+   * test findRaw
+   */
+  export type testFindRawArgs = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+
+  /**
+   * test aggregateRaw
+   */
+  export type testAggregateRawArgs = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+
+  /**
+   * test without action
+   */
+  export type testArgs = {
+    /**
+     * Select specific fields to fetch from the test
+     */
+    select?: testSelect | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -19711,6 +20663,16 @@ export namespace Prisma {
   };
 
   export type StoresScalarFieldEnum = (typeof StoresScalarFieldEnum)[keyof typeof StoresScalarFieldEnum]
+
+
+  export const TestScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    uuid: 'uuid'
+  };
+
+  export type TestScalarFieldEnum = (typeof TestScalarFieldEnum)[keyof typeof TestScalarFieldEnum]
 
 
   export const UsersScalarFieldEnum: {
@@ -20863,6 +21825,48 @@ export namespace Prisma {
     clipped_key?: StringNullableWithAggregatesFilter | string | null
     clipped_url?: StringNullableWithAggregatesFilter | string | null
     item_ids?: StringNullableListFilter
+  }
+
+  export type testWhereInput = {
+    AND?: Enumerable<testWhereInput>
+    OR?: Enumerable<testWhereInput>
+    NOT?: Enumerable<testWhereInput>
+    id?: StringFilter | string
+    createdAt?: DateTimeNullableFilter | Date | string | null
+    updatedAt?: DateTimeNullableFilter | Date | string | null
+    uuid?: StringFilter | string
+  }
+
+  export type testOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uuid?: SortOrder
+  }
+
+  export type testWhereUniqueInput = {
+    id?: string
+    uuid?: string
+  }
+
+  export type testOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uuid?: SortOrder
+    _count?: testCountOrderByAggregateInput
+    _max?: testMaxOrderByAggregateInput
+    _min?: testMinOrderByAggregateInput
+  }
+
+  export type testScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<testScalarWhereWithAggregatesInput>
+    OR?: Enumerable<testScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<testScalarWhereWithAggregatesInput>
+    id?: StringWithAggregatesFilter | string
+    createdAt?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    updatedAt?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    uuid?: StringWithAggregatesFilter | string
   }
 
   export type platformsCreateInput = {
@@ -22237,6 +23241,51 @@ export namespace Prisma {
     item_ids?: imagesUpdateitem_idsInput | Enumerable<string>
   }
 
+  export type testCreateInput = {
+    id?: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    uuid?: string
+  }
+
+  export type testUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    uuid?: string
+  }
+
+  export type testUpdateInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type testUncheckedUpdateInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type testCreateManyInput = {
+    id?: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    uuid?: string
+  }
+
+  export type testUpdateManyMutationInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type testUncheckedUpdateManyInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+  }
+
   export type StringFilter = {
     equals?: string
     in?: Enumerable<string>
@@ -23201,6 +24250,27 @@ export namespace Prisma {
     url?: SortOrder
     clipped_key?: SortOrder
     clipped_url?: SortOrder
+  }
+
+  export type testCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uuid?: SortOrder
+  }
+
+  export type testMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uuid?: SortOrder
+  }
+
+  export type testMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uuid?: SortOrder
   }
 
   export type imagesCreateNestedOneWithoutPlatformsInput = {

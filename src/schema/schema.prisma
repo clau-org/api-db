@@ -452,3 +452,11 @@ enum CurrencyType {
   USD
   CLAU_CREDIT
 }
+
+model test {
+  // Base
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt()
+  uuid      String    @unique @default(uuid())
+}

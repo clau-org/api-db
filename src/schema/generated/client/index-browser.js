@@ -272,6 +272,13 @@ exports.Prisma.StoresScalarFieldEnum = makeEnum({
   inventory_ids: 'inventory_ids'
 });
 
+exports.Prisma.TestScalarFieldEnum = makeEnum({
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  uuid: 'uuid'
+});
+
 exports.Prisma.UsersScalarFieldEnum = makeEnum({
   id: 'id',
   createdAt: 'createdAt',
@@ -322,7 +329,8 @@ exports.Prisma.ModelName = makeEnum({
   PaymentAccount: 'PaymentAccount',
   items: 'items',
   locations: 'locations',
-  images: 'images'
+  images: 'images',
+  test: 'test'
 });
 
 /**
