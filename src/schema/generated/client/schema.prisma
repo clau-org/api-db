@@ -138,6 +138,9 @@ model users {
 
   // Paymenets confirmed by user
   payments_confirmed Payment[] @relation(name: "user_payment_confirm")
+
+  // Sessions of the user
+  session sessions[] @relation()
 }
 
 // Dentro de las plataformas el segundo modelo principal son las organizaciones que representan las agrupacion de usuarios
@@ -404,6 +407,22 @@ model locations {
 
   // Users having this location as prefered location
   users_prefered users[] @relation(name: "user_prefered_location")
+}
+
+// Representa una session de usuario
+model sessions {
+  // Base
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt()
+  uuid      String    @unique @default(uuid())
+
+  // Session data
+  jwt String
+
+  // User that owns the session
+  user_id String @db.ObjectId
+  user    users  @relation(fields: [user_id], references: [id])
 }
 
 // una imagen simple, la original y el recorte

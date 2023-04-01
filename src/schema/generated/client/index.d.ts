@@ -263,6 +263,19 @@ export type locations = {
 }
 
 /**
+ * Model sessions
+ * 
+ */
+export type sessions = {
+  id: string
+  createdAt: Date | null
+  updatedAt: Date | null
+  uuid: string
+  jwt: string
+  user_id: string
+}
+
+/**
  * Model images
  * 
  */
@@ -557,6 +570,16 @@ export class PrismaClient<
     * ```
     */
   get locations(): Prisma.locationsDelegate<GlobalReject>;
+
+  /**
+   * `prisma.sessions`: Exposes CRUD operations for the **sessions** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Sessions
+    * const sessions = await prisma.sessions.findMany()
+    * ```
+    */
+  get sessions(): Prisma.sessionsDelegate<GlobalReject>;
 
   /**
    * `prisma.images`: Exposes CRUD operations for the **images** model.
@@ -1061,6 +1084,7 @@ export namespace Prisma {
     PaymentAccount: 'PaymentAccount',
     items: 'items',
     locations: 'locations',
+    sessions: 'sessions',
     images: 'images',
     ClauTest: 'ClauTest'
   };
@@ -1372,6 +1396,7 @@ export namespace Prisma {
     stores: number
     payments_created: number
     payments_confirmed: number
+    session: number
   }
 
   export type UsersCountOutputTypeSelect = {
@@ -1381,6 +1406,7 @@ export namespace Prisma {
     stores?: boolean
     payments_created?: boolean
     payments_confirmed?: boolean
+    session?: boolean
   }
 
   export type UsersCountOutputTypeGetPayload<S extends boolean | null | undefined | UsersCountOutputTypeArgs> =
@@ -5522,6 +5548,7 @@ export namespace Prisma {
     stores?: boolean | users$storesArgs
     payments_created?: boolean | users$payments_createdArgs
     payments_confirmed?: boolean | users$payments_confirmedArgs
+    session?: boolean | users$sessionArgs
     _count?: boolean | UsersCountOutputTypeArgs
   }
 
@@ -5535,6 +5562,7 @@ export namespace Prisma {
     stores?: boolean | users$storesArgs
     payments_created?: boolean | users$payments_createdArgs
     payments_confirmed?: boolean | users$payments_confirmedArgs
+    session?: boolean | users$sessionArgs
     _count?: boolean | UsersCountOutputTypeArgs
   }
 
@@ -5553,6 +5581,7 @@ export namespace Prisma {
         P extends 'stores' ? Array < storesGetPayload<S['include'][P]>>  :
         P extends 'payments_created' ? Array < PaymentGetPayload<S['include'][P]>>  :
         P extends 'payments_confirmed' ? Array < PaymentGetPayload<S['include'][P]>>  :
+        P extends 'session' ? Array < sessionsGetPayload<S['include'][P]>>  :
         P extends '_count' ? UsersCountOutputTypeGetPayload<S['include'][P]> :  never
   } 
     : S extends { select: any } & (usersArgs | usersFindManyArgs)
@@ -5566,6 +5595,7 @@ export namespace Prisma {
         P extends 'stores' ? Array < storesGetPayload<S['select'][P]>>  :
         P extends 'payments_created' ? Array < PaymentGetPayload<S['select'][P]>>  :
         P extends 'payments_confirmed' ? Array < PaymentGetPayload<S['select'][P]>>  :
+        P extends 'session' ? Array < sessionsGetPayload<S['select'][P]>>  :
         P extends '_count' ? UsersCountOutputTypeGetPayload<S['select'][P]> :  P extends keyof users ? users[P] : never
   } 
       : users
@@ -5980,6 +6010,8 @@ export namespace Prisma {
     payments_created<T extends users$payments_createdArgs= {}>(args?: Subset<T, users$payments_createdArgs>): Prisma.PrismaPromise<Array<PaymentGetPayload<T>>| Null>;
 
     payments_confirmed<T extends users$payments_confirmedArgs= {}>(args?: Subset<T, users$payments_confirmedArgs>): Prisma.PrismaPromise<Array<PaymentGetPayload<T>>| Null>;
+
+    session<T extends users$sessionArgs= {}>(args?: Subset<T, users$sessionArgs>): Prisma.PrismaPromise<Array<sessionsGetPayload<T>>| Null>;
 
     private get _document();
     /**
@@ -6488,6 +6520,27 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Enumerable<PaymentScalarFieldEnum>
+  }
+
+
+  /**
+   * users.session
+   */
+  export type users$sessionArgs = {
+    /**
+     * Select specific fields to fetch from the sessions
+     */
+    select?: sessionsSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: sessionsInclude | null
+    where?: sessionsWhereInput
+    orderBy?: Enumerable<sessionsOrderByWithRelationInput>
+    cursor?: sessionsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Enumerable<SessionsScalarFieldEnum>
   }
 
 
@@ -18320,6 +18373,1001 @@ export namespace Prisma {
 
 
   /**
+   * Model sessions
+   */
+
+
+  export type AggregateSessions = {
+    _count: SessionsCountAggregateOutputType | null
+    _min: SessionsMinAggregateOutputType | null
+    _max: SessionsMaxAggregateOutputType | null
+  }
+
+  export type SessionsMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    uuid: string | null
+    jwt: string | null
+    user_id: string | null
+  }
+
+  export type SessionsMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    uuid: string | null
+    jwt: string | null
+    user_id: string | null
+  }
+
+  export type SessionsCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    uuid: number
+    jwt: number
+    user_id: number
+    _all: number
+  }
+
+
+  export type SessionsMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    uuid?: true
+    jwt?: true
+    user_id?: true
+  }
+
+  export type SessionsMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    uuid?: true
+    jwt?: true
+    user_id?: true
+  }
+
+  export type SessionsCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    uuid?: true
+    jwt?: true
+    user_id?: true
+    _all?: true
+  }
+
+  export type SessionsAggregateArgs = {
+    /**
+     * Filter which sessions to aggregate.
+     */
+    where?: sessionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sessions to fetch.
+     */
+    orderBy?: Enumerable<sessionsOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: sessionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned sessions
+    **/
+    _count?: true | SessionsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SessionsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SessionsMaxAggregateInputType
+  }
+
+  export type GetSessionsAggregateType<T extends SessionsAggregateArgs> = {
+        [P in keyof T & keyof AggregateSessions]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSessions[P]>
+      : GetScalarType<T[P], AggregateSessions[P]>
+  }
+
+
+
+
+  export type SessionsGroupByArgs = {
+    where?: sessionsWhereInput
+    orderBy?: Enumerable<sessionsOrderByWithAggregationInput>
+    by: SessionsScalarFieldEnum[]
+    having?: sessionsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SessionsCountAggregateInputType | true
+    _min?: SessionsMinAggregateInputType
+    _max?: SessionsMaxAggregateInputType
+  }
+
+
+  export type SessionsGroupByOutputType = {
+    id: string
+    createdAt: Date | null
+    updatedAt: Date | null
+    uuid: string
+    jwt: string
+    user_id: string
+    _count: SessionsCountAggregateOutputType | null
+    _min: SessionsMinAggregateOutputType | null
+    _max: SessionsMaxAggregateOutputType | null
+  }
+
+  type GetSessionsGroupByPayload<T extends SessionsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<SessionsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SessionsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SessionsGroupByOutputType[P]>
+            : GetScalarType<T[P], SessionsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type sessionsSelect = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    uuid?: boolean
+    jwt?: boolean
+    user_id?: boolean
+    user?: boolean | usersArgs
+  }
+
+
+  export type sessionsInclude = {
+    user?: boolean | usersArgs
+  }
+
+  export type sessionsGetPayload<S extends boolean | null | undefined | sessionsArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? sessions :
+    S extends undefined ? never :
+    S extends { include: any } & (sessionsArgs | sessionsFindManyArgs)
+    ? sessions  & {
+    [P in TruthyKeys<S['include']>]:
+        P extends 'user' ? usersGetPayload<S['include'][P]> :  never
+  } 
+    : S extends { select: any } & (sessionsArgs | sessionsFindManyArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+        P extends 'user' ? usersGetPayload<S['select'][P]> :  P extends keyof sessions ? sessions[P] : never
+  } 
+      : sessions
+
+
+  type sessionsCountArgs = 
+    Omit<sessionsFindManyArgs, 'select' | 'include'> & {
+      select?: SessionsCountAggregateInputType | true
+    }
+
+  export interface sessionsDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+
+    /**
+     * Find zero or one Sessions that matches the filter.
+     * @param {sessionsFindUniqueArgs} args - Arguments to find a Sessions
+     * @example
+     * // Get one Sessions
+     * const sessions = await prisma.sessions.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends sessionsFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, sessionsFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'sessions'> extends True ? Prisma__sessionsClient<sessionsGetPayload<T>> : Prisma__sessionsClient<sessionsGetPayload<T> | null, null>
+
+    /**
+     * Find one Sessions that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {sessionsFindUniqueOrThrowArgs} args - Arguments to find a Sessions
+     * @example
+     * // Get one Sessions
+     * const sessions = await prisma.sessions.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends sessionsFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, sessionsFindUniqueOrThrowArgs>
+    ): Prisma__sessionsClient<sessionsGetPayload<T>>
+
+    /**
+     * Find the first Sessions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sessionsFindFirstArgs} args - Arguments to find a Sessions
+     * @example
+     * // Get one Sessions
+     * const sessions = await prisma.sessions.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends sessionsFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, sessionsFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'sessions'> extends True ? Prisma__sessionsClient<sessionsGetPayload<T>> : Prisma__sessionsClient<sessionsGetPayload<T> | null, null>
+
+    /**
+     * Find the first Sessions that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sessionsFindFirstOrThrowArgs} args - Arguments to find a Sessions
+     * @example
+     * // Get one Sessions
+     * const sessions = await prisma.sessions.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends sessionsFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, sessionsFindFirstOrThrowArgs>
+    ): Prisma__sessionsClient<sessionsGetPayload<T>>
+
+    /**
+     * Find zero or more Sessions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sessionsFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Sessions
+     * const sessions = await prisma.sessions.findMany()
+     * 
+     * // Get first 10 Sessions
+     * const sessions = await prisma.sessions.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const sessionsWithIdOnly = await prisma.sessions.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends sessionsFindManyArgs>(
+      args?: SelectSubset<T, sessionsFindManyArgs>
+    ): Prisma.PrismaPromise<Array<sessionsGetPayload<T>>>
+
+    /**
+     * Create a Sessions.
+     * @param {sessionsCreateArgs} args - Arguments to create a Sessions.
+     * @example
+     * // Create one Sessions
+     * const Sessions = await prisma.sessions.create({
+     *   data: {
+     *     // ... data to create a Sessions
+     *   }
+     * })
+     * 
+    **/
+    create<T extends sessionsCreateArgs>(
+      args: SelectSubset<T, sessionsCreateArgs>
+    ): Prisma__sessionsClient<sessionsGetPayload<T>>
+
+    /**
+     * Create many Sessions.
+     *     @param {sessionsCreateManyArgs} args - Arguments to create many Sessions.
+     *     @example
+     *     // Create many Sessions
+     *     const sessions = await prisma.sessions.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends sessionsCreateManyArgs>(
+      args?: SelectSubset<T, sessionsCreateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Sessions.
+     * @param {sessionsDeleteArgs} args - Arguments to delete one Sessions.
+     * @example
+     * // Delete one Sessions
+     * const Sessions = await prisma.sessions.delete({
+     *   where: {
+     *     // ... filter to delete one Sessions
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends sessionsDeleteArgs>(
+      args: SelectSubset<T, sessionsDeleteArgs>
+    ): Prisma__sessionsClient<sessionsGetPayload<T>>
+
+    /**
+     * Update one Sessions.
+     * @param {sessionsUpdateArgs} args - Arguments to update one Sessions.
+     * @example
+     * // Update one Sessions
+     * const sessions = await prisma.sessions.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends sessionsUpdateArgs>(
+      args: SelectSubset<T, sessionsUpdateArgs>
+    ): Prisma__sessionsClient<sessionsGetPayload<T>>
+
+    /**
+     * Delete zero or more Sessions.
+     * @param {sessionsDeleteManyArgs} args - Arguments to filter Sessions to delete.
+     * @example
+     * // Delete a few Sessions
+     * const { count } = await prisma.sessions.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends sessionsDeleteManyArgs>(
+      args?: SelectSubset<T, sessionsDeleteManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sessionsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Sessions
+     * const sessions = await prisma.sessions.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends sessionsUpdateManyArgs>(
+      args: SelectSubset<T, sessionsUpdateManyArgs>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Sessions.
+     * @param {sessionsUpsertArgs} args - Arguments to update or create a Sessions.
+     * @example
+     * // Update or create a Sessions
+     * const sessions = await prisma.sessions.upsert({
+     *   create: {
+     *     // ... data to create a Sessions
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Sessions we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends sessionsUpsertArgs>(
+      args: SelectSubset<T, sessionsUpsertArgs>
+    ): Prisma__sessionsClient<sessionsGetPayload<T>>
+
+    /**
+     * Find zero or more Sessions that matches the filter.
+     * @param {sessionsFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const sessions = await prisma.sessions.findRaw({
+     *   filter: { age: { $gt: 25 } } 
+     * })
+    **/
+    findRaw(
+      args?: sessionsFindRawArgs
+    ): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a Sessions.
+     * @param {sessionsAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const sessions = await prisma.sessions.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+    **/
+    aggregateRaw(
+      args?: sessionsAggregateRawArgs
+    ): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Count the number of Sessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {sessionsCountArgs} args - Arguments to filter Sessions to count.
+     * @example
+     * // Count the number of Sessions
+     * const count = await prisma.sessions.count({
+     *   where: {
+     *     // ... the filter for the Sessions we want to count
+     *   }
+     * })
+    **/
+    count<T extends sessionsCountArgs>(
+      args?: Subset<T, sessionsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends _Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SessionsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Sessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SessionsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SessionsAggregateArgs>(args: Subset<T, SessionsAggregateArgs>): Prisma.PrismaPromise<GetSessionsAggregateType<T>>
+
+    /**
+     * Group by Sessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SessionsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SessionsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SessionsGroupByArgs['orderBy'] }
+        : { orderBy?: SessionsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SessionsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSessionsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for sessions.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__sessionsClient<T, Null = never> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+    user<T extends usersArgs= {}>(args?: Subset<T, usersArgs>): Prisma__usersClient<usersGetPayload<T> | Null>;
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * sessions base type for findUnique actions
+   */
+  export type sessionsFindUniqueArgsBase = {
+    /**
+     * Select specific fields to fetch from the sessions
+     */
+    select?: sessionsSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: sessionsInclude | null
+    /**
+     * Filter, which sessions to fetch.
+     */
+    where: sessionsWhereUniqueInput
+  }
+
+  /**
+   * sessions findUnique
+   */
+  export interface sessionsFindUniqueArgs extends sessionsFindUniqueArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * sessions findUniqueOrThrow
+   */
+  export type sessionsFindUniqueOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the sessions
+     */
+    select?: sessionsSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: sessionsInclude | null
+    /**
+     * Filter, which sessions to fetch.
+     */
+    where: sessionsWhereUniqueInput
+  }
+
+
+  /**
+   * sessions base type for findFirst actions
+   */
+  export type sessionsFindFirstArgsBase = {
+    /**
+     * Select specific fields to fetch from the sessions
+     */
+    select?: sessionsSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: sessionsInclude | null
+    /**
+     * Filter, which sessions to fetch.
+     */
+    where?: sessionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sessions to fetch.
+     */
+    orderBy?: Enumerable<sessionsOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for sessions.
+     */
+    cursor?: sessionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of sessions.
+     */
+    distinct?: Enumerable<SessionsScalarFieldEnum>
+  }
+
+  /**
+   * sessions findFirst
+   */
+  export interface sessionsFindFirstArgs extends sessionsFindFirstArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * sessions findFirstOrThrow
+   */
+  export type sessionsFindFirstOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the sessions
+     */
+    select?: sessionsSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: sessionsInclude | null
+    /**
+     * Filter, which sessions to fetch.
+     */
+    where?: sessionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sessions to fetch.
+     */
+    orderBy?: Enumerable<sessionsOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for sessions.
+     */
+    cursor?: sessionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of sessions.
+     */
+    distinct?: Enumerable<SessionsScalarFieldEnum>
+  }
+
+
+  /**
+   * sessions findMany
+   */
+  export type sessionsFindManyArgs = {
+    /**
+     * Select specific fields to fetch from the sessions
+     */
+    select?: sessionsSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: sessionsInclude | null
+    /**
+     * Filter, which sessions to fetch.
+     */
+    where?: sessionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of sessions to fetch.
+     */
+    orderBy?: Enumerable<sessionsOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing sessions.
+     */
+    cursor?: sessionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` sessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` sessions.
+     */
+    skip?: number
+    distinct?: Enumerable<SessionsScalarFieldEnum>
+  }
+
+
+  /**
+   * sessions create
+   */
+  export type sessionsCreateArgs = {
+    /**
+     * Select specific fields to fetch from the sessions
+     */
+    select?: sessionsSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: sessionsInclude | null
+    /**
+     * The data needed to create a sessions.
+     */
+    data: XOR<sessionsCreateInput, sessionsUncheckedCreateInput>
+  }
+
+
+  /**
+   * sessions createMany
+   */
+  export type sessionsCreateManyArgs = {
+    /**
+     * The data used to create many sessions.
+     */
+    data: Enumerable<sessionsCreateManyInput>
+  }
+
+
+  /**
+   * sessions update
+   */
+  export type sessionsUpdateArgs = {
+    /**
+     * Select specific fields to fetch from the sessions
+     */
+    select?: sessionsSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: sessionsInclude | null
+    /**
+     * The data needed to update a sessions.
+     */
+    data: XOR<sessionsUpdateInput, sessionsUncheckedUpdateInput>
+    /**
+     * Choose, which sessions to update.
+     */
+    where: sessionsWhereUniqueInput
+  }
+
+
+  /**
+   * sessions updateMany
+   */
+  export type sessionsUpdateManyArgs = {
+    /**
+     * The data used to update sessions.
+     */
+    data: XOR<sessionsUpdateManyMutationInput, sessionsUncheckedUpdateManyInput>
+    /**
+     * Filter which sessions to update
+     */
+    where?: sessionsWhereInput
+  }
+
+
+  /**
+   * sessions upsert
+   */
+  export type sessionsUpsertArgs = {
+    /**
+     * Select specific fields to fetch from the sessions
+     */
+    select?: sessionsSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: sessionsInclude | null
+    /**
+     * The filter to search for the sessions to update in case it exists.
+     */
+    where: sessionsWhereUniqueInput
+    /**
+     * In case the sessions found by the `where` argument doesn't exist, create a new sessions with this data.
+     */
+    create: XOR<sessionsCreateInput, sessionsUncheckedCreateInput>
+    /**
+     * In case the sessions was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<sessionsUpdateInput, sessionsUncheckedUpdateInput>
+  }
+
+
+  /**
+   * sessions delete
+   */
+  export type sessionsDeleteArgs = {
+    /**
+     * Select specific fields to fetch from the sessions
+     */
+    select?: sessionsSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: sessionsInclude | null
+    /**
+     * Filter which sessions to delete.
+     */
+    where: sessionsWhereUniqueInput
+  }
+
+
+  /**
+   * sessions deleteMany
+   */
+  export type sessionsDeleteManyArgs = {
+    /**
+     * Filter which sessions to delete
+     */
+    where?: sessionsWhereInput
+  }
+
+
+  /**
+   * sessions findRaw
+   */
+  export type sessionsFindRawArgs = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+
+  /**
+   * sessions aggregateRaw
+   */
+  export type sessionsAggregateRawArgs = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+
+  /**
+   * sessions without action
+   */
+  export type sessionsArgs = {
+    /**
+     * Select specific fields to fetch from the sessions
+     */
+    select?: sessionsSelect | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: sessionsInclude | null
+  }
+
+
+
+  /**
    * Model images
    */
 
@@ -20651,6 +21699,18 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
+  export const SessionsScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    uuid: 'uuid',
+    jwt: 'jwt',
+    user_id: 'user_id'
+  };
+
+  export type SessionsScalarFieldEnum = (typeof SessionsScalarFieldEnum)[keyof typeof SessionsScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -20950,6 +22010,7 @@ export namespace Prisma {
     stores?: StoresListRelationFilter
     payments_created?: PaymentListRelationFilter
     payments_confirmed?: PaymentListRelationFilter
+    session?: SessionsListRelationFilter
   }
 
   export type usersOrderByWithRelationInput = {
@@ -20977,6 +22038,7 @@ export namespace Prisma {
     stores?: storesOrderByRelationAggregateInput
     payments_created?: PaymentOrderByRelationAggregateInput
     payments_confirmed?: PaymentOrderByRelationAggregateInput
+    session?: sessionsOrderByRelationAggregateInput
   }
 
   export type usersWhereUniqueInput = {
@@ -21749,6 +22811,58 @@ export namespace Prisma {
     store_ids?: StringNullableListFilter
   }
 
+  export type sessionsWhereInput = {
+    AND?: Enumerable<sessionsWhereInput>
+    OR?: Enumerable<sessionsWhereInput>
+    NOT?: Enumerable<sessionsWhereInput>
+    id?: StringFilter | string
+    createdAt?: DateTimeNullableFilter | Date | string | null
+    updatedAt?: DateTimeNullableFilter | Date | string | null
+    uuid?: StringFilter | string
+    jwt?: StringFilter | string
+    user_id?: StringFilter | string
+    user?: XOR<UsersRelationFilter, usersWhereInput>
+  }
+
+  export type sessionsOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uuid?: SortOrder
+    jwt?: SortOrder
+    user_id?: SortOrder
+    user?: usersOrderByWithRelationInput
+  }
+
+  export type sessionsWhereUniqueInput = {
+    id?: string
+    uuid?: string
+  }
+
+  export type sessionsOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uuid?: SortOrder
+    jwt?: SortOrder
+    user_id?: SortOrder
+    _count?: sessionsCountOrderByAggregateInput
+    _max?: sessionsMaxOrderByAggregateInput
+    _min?: sessionsMinOrderByAggregateInput
+  }
+
+  export type sessionsScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<sessionsScalarWhereWithAggregatesInput>
+    OR?: Enumerable<sessionsScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<sessionsScalarWhereWithAggregatesInput>
+    id?: StringWithAggregatesFilter | string
+    createdAt?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    updatedAt?: DateTimeNullableWithAggregatesFilter | Date | string | null
+    uuid?: StringWithAggregatesFilter | string
+    jwt?: StringWithAggregatesFilter | string
+    user_id?: StringWithAggregatesFilter | string
+  }
+
   export type imagesWhereInput = {
     AND?: Enumerable<imagesWhereInput>
     OR?: Enumerable<imagesWhereInput>
@@ -22156,6 +23270,7 @@ export namespace Prisma {
     stores?: storesCreateNestedManyWithoutUsersInput
     payments_created?: PaymentCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateInput = {
@@ -22181,6 +23296,7 @@ export namespace Prisma {
     stores?: storesUncheckedCreateNestedManyWithoutUsersInput
     payments_created?: PaymentUncheckedCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentUncheckedCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersUpdateInput = {
@@ -22201,6 +23317,7 @@ export namespace Prisma {
     stores?: storesUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateInput = {
@@ -22225,6 +23342,7 @@ export namespace Prisma {
     stores?: storesUncheckedUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUncheckedUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUncheckedUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersCreateManyInput = {
@@ -23140,6 +24258,64 @@ export namespace Prisma {
     store_ids?: locationsUpdatestore_idsInput | Enumerable<string>
   }
 
+  export type sessionsCreateInput = {
+    id?: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    uuid?: string
+    jwt: string
+    user: usersCreateNestedOneWithoutSessionInput
+  }
+
+  export type sessionsUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    uuid?: string
+    jwt: string
+    user_id: string
+  }
+
+  export type sessionsUpdateInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+    jwt?: StringFieldUpdateOperationsInput | string
+    user?: usersUpdateOneRequiredWithoutSessionNestedInput
+  }
+
+  export type sessionsUncheckedUpdateInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+    jwt?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type sessionsCreateManyInput = {
+    id?: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    uuid?: string
+    jwt: string
+    user_id: string
+  }
+
+  export type sessionsUpdateManyMutationInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+    jwt?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type sessionsUncheckedUpdateManyInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+    jwt?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+  }
+
   export type imagesCreateInput = {
     id?: string
     createdAt?: Date | string | null
@@ -23596,6 +24772,12 @@ export namespace Prisma {
     none?: PaymentWhereInput
   }
 
+  export type SessionsListRelationFilter = {
+    every?: sessionsWhereInput
+    some?: sessionsWhereInput
+    none?: sessionsWhereInput
+  }
+
   export type locationsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -23605,6 +24787,10 @@ export namespace Prisma {
   }
 
   export type PaymentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type sessionsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -24208,6 +25394,33 @@ export namespace Prisma {
     isSet?: boolean
   }
 
+  export type sessionsCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uuid?: SortOrder
+    jwt?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type sessionsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uuid?: SortOrder
+    jwt?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type sessionsMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uuid?: SortOrder
+    jwt?: SortOrder
+    user_id?: SortOrder
+  }
+
   export type ItemsListRelationFilter = {
     every?: itemsWhereInput
     some?: itemsWhereInput
@@ -24720,6 +25933,13 @@ export namespace Prisma {
     connect?: Enumerable<PaymentWhereUniqueInput>
   }
 
+  export type sessionsCreateNestedManyWithoutUserInput = {
+    create?: XOR<Enumerable<sessionsCreateWithoutUserInput>, Enumerable<sessionsUncheckedCreateWithoutUserInput>>
+    connectOrCreate?: Enumerable<sessionsCreateOrConnectWithoutUserInput>
+    createMany?: sessionsCreateManyUserInputEnvelope
+    connect?: Enumerable<sessionsWhereUniqueInput>
+  }
+
   export type usersCreatelocation_idsInput = {
     set: Enumerable<string>
   }
@@ -24772,6 +25992,13 @@ export namespace Prisma {
     connectOrCreate?: Enumerable<PaymentCreateOrConnectWithoutUser_confirmInput>
     createMany?: PaymentCreateManyUser_confirmInputEnvelope
     connect?: Enumerable<PaymentWhereUniqueInput>
+  }
+
+  export type sessionsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<Enumerable<sessionsCreateWithoutUserInput>, Enumerable<sessionsUncheckedCreateWithoutUserInput>>
+    connectOrCreate?: Enumerable<sessionsCreateOrConnectWithoutUserInput>
+    createMany?: sessionsCreateManyUserInputEnvelope
+    connect?: Enumerable<sessionsWhereUniqueInput>
   }
 
   export type NullableEnumGenderTypeFieldUpdateOperationsInput = {
@@ -24879,6 +26106,20 @@ export namespace Prisma {
     deleteMany?: Enumerable<PaymentScalarWhereInput>
   }
 
+  export type sessionsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<Enumerable<sessionsCreateWithoutUserInput>, Enumerable<sessionsUncheckedCreateWithoutUserInput>>
+    connectOrCreate?: Enumerable<sessionsCreateOrConnectWithoutUserInput>
+    upsert?: Enumerable<sessionsUpsertWithWhereUniqueWithoutUserInput>
+    createMany?: sessionsCreateManyUserInputEnvelope
+    set?: Enumerable<sessionsWhereUniqueInput>
+    disconnect?: Enumerable<sessionsWhereUniqueInput>
+    delete?: Enumerable<sessionsWhereUniqueInput>
+    connect?: Enumerable<sessionsWhereUniqueInput>
+    update?: Enumerable<sessionsUpdateWithWhereUniqueWithoutUserInput>
+    updateMany?: Enumerable<sessionsUpdateManyWithWhereWithoutUserInput>
+    deleteMany?: Enumerable<sessionsScalarWhereInput>
+  }
+
   export type usersUpdatelocation_idsInput = {
     set?: Enumerable<string>
     push?: string | Enumerable<string>
@@ -24977,6 +26218,20 @@ export namespace Prisma {
     update?: Enumerable<PaymentUpdateWithWhereUniqueWithoutUser_confirmInput>
     updateMany?: Enumerable<PaymentUpdateManyWithWhereWithoutUser_confirmInput>
     deleteMany?: Enumerable<PaymentScalarWhereInput>
+  }
+
+  export type sessionsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<Enumerable<sessionsCreateWithoutUserInput>, Enumerable<sessionsUncheckedCreateWithoutUserInput>>
+    connectOrCreate?: Enumerable<sessionsCreateOrConnectWithoutUserInput>
+    upsert?: Enumerable<sessionsUpsertWithWhereUniqueWithoutUserInput>
+    createMany?: sessionsCreateManyUserInputEnvelope
+    set?: Enumerable<sessionsWhereUniqueInput>
+    disconnect?: Enumerable<sessionsWhereUniqueInput>
+    delete?: Enumerable<sessionsWhereUniqueInput>
+    connect?: Enumerable<sessionsWhereUniqueInput>
+    update?: Enumerable<sessionsUpdateWithWhereUniqueWithoutUserInput>
+    updateMany?: Enumerable<sessionsUpdateManyWithWhereWithoutUserInput>
+    deleteMany?: Enumerable<sessionsScalarWhereInput>
   }
 
   export type imagesCreateNestedOneWithoutOrganizationsInput = {
@@ -26121,6 +27376,20 @@ export namespace Prisma {
     deleteMany?: Enumerable<usersScalarWhereInput>
   }
 
+  export type usersCreateNestedOneWithoutSessionInput = {
+    create?: XOR<usersCreateWithoutSessionInput, usersUncheckedCreateWithoutSessionInput>
+    connectOrCreate?: usersCreateOrConnectWithoutSessionInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type usersUpdateOneRequiredWithoutSessionNestedInput = {
+    create?: XOR<usersCreateWithoutSessionInput, usersUncheckedCreateWithoutSessionInput>
+    connectOrCreate?: usersCreateOrConnectWithoutSessionInput
+    upsert?: usersUpsertWithoutSessionInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<usersUpdateWithoutSessionInput, usersUncheckedUpdateWithoutSessionInput>
+  }
+
   export type platformsCreateNestedManyWithoutImageInput = {
     create?: XOR<Enumerable<platformsCreateWithoutImageInput>, Enumerable<platformsUncheckedCreateWithoutImageInput>>
     connectOrCreate?: Enumerable<platformsCreateOrConnectWithoutImageInput>
@@ -26721,6 +27990,7 @@ export namespace Prisma {
     stores?: storesCreateNestedManyWithoutUsersInput
     payments_created?: PaymentCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutPlatformsInput = {
@@ -26745,6 +28015,7 @@ export namespace Prisma {
     stores?: storesUncheckedCreateNestedManyWithoutUsersInput
     payments_created?: PaymentUncheckedCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentUncheckedCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutPlatformsInput = {
@@ -27535,6 +28806,31 @@ export namespace Prisma {
     data: Enumerable<PaymentCreateManyUser_confirmInput>
   }
 
+  export type sessionsCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    uuid?: string
+    jwt: string
+  }
+
+  export type sessionsUncheckedCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    uuid?: string
+    jwt: string
+  }
+
+  export type sessionsCreateOrConnectWithoutUserInput = {
+    where: sessionsWhereUniqueInput
+    create: XOR<sessionsCreateWithoutUserInput, sessionsUncheckedCreateWithoutUserInput>
+  }
+
+  export type sessionsCreateManyUserInputEnvelope = {
+    data: Enumerable<sessionsCreateManyUserInput>
+  }
+
   export type imagesUpsertWithoutUsersInput = {
     update: XOR<imagesUpdateWithoutUsersInput, imagesUncheckedUpdateWithoutUsersInput>
     create: XOR<imagesCreateWithoutUsersInput, imagesUncheckedCreateWithoutUsersInput>
@@ -27749,6 +29045,34 @@ export namespace Prisma {
     data: XOR<PaymentUpdateManyMutationInput, PaymentUncheckedUpdateManyWithoutPayments_confirmedInput>
   }
 
+  export type sessionsUpsertWithWhereUniqueWithoutUserInput = {
+    where: sessionsWhereUniqueInput
+    update: XOR<sessionsUpdateWithoutUserInput, sessionsUncheckedUpdateWithoutUserInput>
+    create: XOR<sessionsCreateWithoutUserInput, sessionsUncheckedCreateWithoutUserInput>
+  }
+
+  export type sessionsUpdateWithWhereUniqueWithoutUserInput = {
+    where: sessionsWhereUniqueInput
+    data: XOR<sessionsUpdateWithoutUserInput, sessionsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type sessionsUpdateManyWithWhereWithoutUserInput = {
+    where: sessionsScalarWhereInput
+    data: XOR<sessionsUpdateManyMutationInput, sessionsUncheckedUpdateManyWithoutSessionInput>
+  }
+
+  export type sessionsScalarWhereInput = {
+    AND?: Enumerable<sessionsScalarWhereInput>
+    OR?: Enumerable<sessionsScalarWhereInput>
+    NOT?: Enumerable<sessionsScalarWhereInput>
+    id?: StringFilter | string
+    createdAt?: DateTimeNullableFilter | Date | string | null
+    updatedAt?: DateTimeNullableFilter | Date | string | null
+    uuid?: StringFilter | string
+    jwt?: StringFilter | string
+    user_id?: StringFilter | string
+  }
+
   export type imagesCreateWithoutOrganizationsInput = {
     id?: string
     createdAt?: Date | string | null
@@ -27840,6 +29164,7 @@ export namespace Prisma {
     stores?: storesCreateNestedManyWithoutUsersInput
     payments_created?: PaymentCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutOrganizationsInput = {
@@ -27864,6 +29189,7 @@ export namespace Prisma {
     stores?: storesUncheckedCreateNestedManyWithoutUsersInput
     payments_created?: PaymentUncheckedCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentUncheckedCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutOrganizationsInput = {
@@ -28046,6 +29372,7 @@ export namespace Prisma {
     organizations?: organizationsCreateNestedManyWithoutUsersInput
     payments_created?: PaymentCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutStoresInput = {
@@ -28070,6 +29397,7 @@ export namespace Prisma {
     organizations?: organizationsUncheckedCreateNestedManyWithoutUsersInput
     payments_created?: PaymentUncheckedCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentUncheckedCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutStoresInput = {
@@ -28708,6 +30036,7 @@ export namespace Prisma {
     organizations?: organizationsCreateNestedManyWithoutUsersInput
     stores?: storesCreateNestedManyWithoutUsersInput
     payments_confirmed?: PaymentCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutPayments_createdInput = {
@@ -28732,6 +30061,7 @@ export namespace Prisma {
     organizations?: organizationsUncheckedCreateNestedManyWithoutUsersInput
     stores?: storesUncheckedCreateNestedManyWithoutUsersInput
     payments_confirmed?: PaymentUncheckedCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutPayments_createdInput = {
@@ -28757,6 +30087,7 @@ export namespace Prisma {
     organizations?: organizationsCreateNestedManyWithoutUsersInput
     stores?: storesCreateNestedManyWithoutUsersInput
     payments_created?: PaymentCreateNestedManyWithoutUser_creatorInput
+    session?: sessionsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutPayments_confirmedInput = {
@@ -28781,6 +30112,7 @@ export namespace Prisma {
     organizations?: organizationsUncheckedCreateNestedManyWithoutUsersInput
     stores?: storesUncheckedCreateNestedManyWithoutUsersInput
     payments_created?: PaymentUncheckedCreateNestedManyWithoutUser_creatorInput
+    session?: sessionsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutPayments_confirmedInput = {
@@ -28882,6 +30214,7 @@ export namespace Prisma {
     organizations?: organizationsUpdateManyWithoutUsersNestedInput
     stores?: storesUpdateManyWithoutUsersNestedInput
     payments_confirmed?: PaymentUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutPayments_createdInput = {
@@ -28905,6 +30238,7 @@ export namespace Prisma {
     organizations?: organizationsUncheckedUpdateManyWithoutUsersNestedInput
     stores?: storesUncheckedUpdateManyWithoutUsersNestedInput
     payments_confirmed?: PaymentUncheckedUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersUpsertWithoutPayments_confirmedInput = {
@@ -28929,6 +30263,7 @@ export namespace Prisma {
     organizations?: organizationsUpdateManyWithoutUsersNestedInput
     stores?: storesUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUpdateManyWithoutUser_creatorNestedInput
+    session?: sessionsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutPayments_confirmedInput = {
@@ -28952,6 +30287,7 @@ export namespace Prisma {
     organizations?: organizationsUncheckedUpdateManyWithoutUsersNestedInput
     stores?: storesUncheckedUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUncheckedUpdateManyWithoutUser_creatorNestedInput
+    session?: sessionsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PaymentAccountUpsertWithoutPayments_receivedInput = {
@@ -29290,6 +30626,7 @@ export namespace Prisma {
     stores?: storesCreateNestedManyWithoutUsersInput
     payments_created?: PaymentCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutLocationsInput = {
@@ -29314,6 +30651,7 @@ export namespace Prisma {
     stores?: storesUncheckedCreateNestedManyWithoutUsersInput
     payments_created?: PaymentUncheckedCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentUncheckedCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutLocationsInput = {
@@ -29403,6 +30741,7 @@ export namespace Prisma {
     stores?: storesCreateNestedManyWithoutUsersInput
     payments_created?: PaymentCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutPrefered_locationInput = {
@@ -29427,6 +30766,7 @@ export namespace Prisma {
     stores?: storesUncheckedCreateNestedManyWithoutUsersInput
     payments_created?: PaymentUncheckedCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentUncheckedCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutPrefered_locationInput = {
@@ -29500,6 +30840,106 @@ export namespace Prisma {
   export type usersUpdateManyWithWhereWithoutPrefered_locationInput = {
     where: usersScalarWhereInput
     data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyWithoutUsers_preferedInput>
+  }
+
+  export type usersCreateWithoutSessionInput = {
+    id?: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    uuid?: string
+    nickname?: string | null
+    email?: string | null
+    phone?: string | null
+    name?: string | null
+    birthDate?: string | null
+    gender?: GenderType | null
+    image?: imagesCreateNestedOneWithoutUsersInput
+    prefered_location?: locationsCreateNestedOneWithoutUsers_preferedInput
+    locations?: locationsCreateNestedManyWithoutUsersInput
+    platforms?: platformsCreateNestedManyWithoutUsersInput
+    organizations?: organizationsCreateNestedManyWithoutUsersInput
+    stores?: storesCreateNestedManyWithoutUsersInput
+    payments_created?: PaymentCreateNestedManyWithoutUser_creatorInput
+    payments_confirmed?: PaymentCreateNestedManyWithoutUser_confirmInput
+  }
+
+  export type usersUncheckedCreateWithoutSessionInput = {
+    id?: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    uuid?: string
+    nickname?: string | null
+    email?: string | null
+    phone?: string | null
+    name?: string | null
+    birthDate?: string | null
+    gender?: GenderType | null
+    image_id?: string | null
+    prefered_location_id?: string | null
+    location_ids?: usersCreatelocation_idsInput | Enumerable<string>
+    platform_ids?: usersCreateplatform_idsInput | Enumerable<string>
+    organization_ids?: usersCreateorganization_idsInput | Enumerable<string>
+    store_ids?: usersCreatestore_idsInput | Enumerable<string>
+    locations?: locationsUncheckedCreateNestedManyWithoutUsersInput
+    platforms?: platformsUncheckedCreateNestedManyWithoutUsersInput
+    organizations?: organizationsUncheckedCreateNestedManyWithoutUsersInput
+    stores?: storesUncheckedCreateNestedManyWithoutUsersInput
+    payments_created?: PaymentUncheckedCreateNestedManyWithoutUser_creatorInput
+    payments_confirmed?: PaymentUncheckedCreateNestedManyWithoutUser_confirmInput
+  }
+
+  export type usersCreateOrConnectWithoutSessionInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutSessionInput, usersUncheckedCreateWithoutSessionInput>
+  }
+
+  export type usersUpsertWithoutSessionInput = {
+    update: XOR<usersUpdateWithoutSessionInput, usersUncheckedUpdateWithoutSessionInput>
+    create: XOR<usersCreateWithoutSessionInput, usersUncheckedCreateWithoutSessionInput>
+  }
+
+  export type usersUpdateWithoutSessionInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+    nickname?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
+    image?: imagesUpdateOneWithoutUsersNestedInput
+    prefered_location?: locationsUpdateOneWithoutUsers_preferedNestedInput
+    locations?: locationsUpdateManyWithoutUsersNestedInput
+    platforms?: platformsUpdateManyWithoutUsersNestedInput
+    organizations?: organizationsUpdateManyWithoutUsersNestedInput
+    stores?: storesUpdateManyWithoutUsersNestedInput
+    payments_created?: PaymentUpdateManyWithoutUser_creatorNestedInput
+    payments_confirmed?: PaymentUpdateManyWithoutUser_confirmNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutSessionInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+    nickname?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
+    prefered_location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    location_ids?: usersUpdatelocation_idsInput | Enumerable<string>
+    platform_ids?: usersUpdateplatform_idsInput | Enumerable<string>
+    organization_ids?: usersUpdateorganization_idsInput | Enumerable<string>
+    store_ids?: usersUpdatestore_idsInput | Enumerable<string>
+    locations?: locationsUncheckedUpdateManyWithoutUsersNestedInput
+    platforms?: platformsUncheckedUpdateManyWithoutUsersNestedInput
+    organizations?: organizationsUncheckedUpdateManyWithoutUsersNestedInput
+    stores?: storesUncheckedUpdateManyWithoutUsersNestedInput
+    payments_created?: PaymentUncheckedUpdateManyWithoutUser_creatorNestedInput
+    payments_confirmed?: PaymentUncheckedUpdateManyWithoutUser_confirmNestedInput
   }
 
   export type platformsCreateWithoutImageInput = {
@@ -29665,6 +31105,7 @@ export namespace Prisma {
     stores?: storesCreateNestedManyWithoutUsersInput
     payments_created?: PaymentCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutImageInput = {
@@ -29689,6 +31130,7 @@ export namespace Prisma {
     stores?: storesUncheckedCreateNestedManyWithoutUsersInput
     payments_created?: PaymentUncheckedCreateNestedManyWithoutUser_creatorInput
     payments_confirmed?: PaymentUncheckedCreateNestedManyWithoutUser_confirmInput
+    session?: sessionsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutImageInput = {
@@ -29935,6 +31377,7 @@ export namespace Prisma {
     stores?: storesUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutPlatformsInput = {
@@ -29958,6 +31401,7 @@ export namespace Prisma {
     stores?: storesUncheckedUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUncheckedUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUncheckedUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateManyWithoutUsersInput = {
@@ -30145,6 +31589,14 @@ export namespace Prisma {
     receiver_account_id: string
     sender_account_id: string
     amount: XOR<CurrencyCreateEnvelopeInput, CurrencyCreateInput>
+  }
+
+  export type sessionsCreateManyUserInput = {
+    id?: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+    uuid?: string
+    jwt: string
   }
 
   export type locationsUpdateWithoutUsersInput = {
@@ -30355,6 +31807,27 @@ export namespace Prisma {
     amount?: XOR<CurrencyUpdateEnvelopeInput, CurrencyCreateInput>
   }
 
+  export type sessionsUpdateWithoutUserInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+    jwt?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type sessionsUncheckedUpdateWithoutUserInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+    jwt?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type sessionsUncheckedUpdateManyWithoutSessionInput = {
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uuid?: StringFieldUpdateOperationsInput | string
+    jwt?: StringFieldUpdateOperationsInput | string
+  }
+
   export type platformsUpdateWithoutOrganizationsInput = {
     uuid?: StringFieldUpdateOperationsInput | string
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -30400,6 +31873,7 @@ export namespace Prisma {
     stores?: storesUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutOrganizationsInput = {
@@ -30423,6 +31897,7 @@ export namespace Prisma {
     stores?: storesUncheckedUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUncheckedUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUncheckedUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type locationsUpdateWithoutOrganizationsInput = {
@@ -30470,6 +31945,7 @@ export namespace Prisma {
     organizations?: organizationsUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutStoresInput = {
@@ -30493,6 +31969,7 @@ export namespace Prisma {
     organizations?: organizationsUncheckedUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUncheckedUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUncheckedUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type locationsUpdateWithoutStoresInput = {
@@ -30977,6 +32454,7 @@ export namespace Prisma {
     stores?: storesUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutLocationsInput = {
@@ -31000,6 +32478,7 @@ export namespace Prisma {
     stores?: storesUncheckedUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUncheckedUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUncheckedUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type organizationsUpdateWithoutLocationsInput = {
@@ -31069,6 +32548,7 @@ export namespace Prisma {
     stores?: storesUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutPrefered_locationInput = {
@@ -31092,6 +32572,7 @@ export namespace Prisma {
     stores?: storesUncheckedUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUncheckedUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUncheckedUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateManyWithoutUsers_preferedInput = {
@@ -31295,6 +32776,7 @@ export namespace Prisma {
     stores?: storesUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutImageInput = {
@@ -31318,6 +32800,7 @@ export namespace Prisma {
     stores?: storesUncheckedUpdateManyWithoutUsersNestedInput
     payments_created?: PaymentUncheckedUpdateManyWithoutUser_creatorNestedInput
     payments_confirmed?: PaymentUncheckedUpdateManyWithoutUser_confirmNestedInput
+    session?: sessionsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type itemsUpdateWithoutImagesInput = {

@@ -261,6 +261,15 @@ exports.Prisma.QueryMode = makeEnum({
   insensitive: 'insensitive'
 });
 
+exports.Prisma.SessionsScalarFieldEnum = makeEnum({
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  uuid: 'uuid',
+  jwt: 'jwt',
+  user_id: 'user_id'
+});
+
 exports.Prisma.SortOrder = makeEnum({
   asc: 'asc',
   desc: 'desc'
@@ -329,6 +338,7 @@ exports.Prisma.ModelName = makeEnum({
   PaymentAccount: 'PaymentAccount',
   items: 'items',
   locations: 'locations',
+  sessions: 'sessions',
   images: 'images',
   ClauTest: 'ClauTest'
 });
