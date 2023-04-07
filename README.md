@@ -24,7 +24,6 @@ To run the test for this module run:
 deno task test
 ```
 
-
 ## Release
 
 To release a new `patch` version push to main. To any type of release go to the
