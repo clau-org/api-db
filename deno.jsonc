@@ -1,5 +1,5 @@
 {
-  "version": "0.0.4",
+  "version": "0.0.5",
   "tasks": {
     "prisma": "deno run -A npm:prisma@latest generate --data-proxy --schema=./src/schema/schema.prisma",
     "prisma:push": "deno run -A npm:prisma@latest db push --schema=./src/schema/schema.prisma"
