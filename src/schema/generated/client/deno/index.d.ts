@@ -83,7 +83,7 @@ export type users = {
   email: string | null
   phone: string | null
   name: string | null
-  birthDate: string | null
+  birthDate: Date | null
   gender: GenderType | null
   image_id: string | null
   prefered_location_id: string | null
@@ -5323,7 +5323,7 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     name: string | null
-    birthDate: string | null
+    birthDate: Date | null
     gender: GenderType | null
     image_id: string | null
     prefered_location_id: string | null
@@ -5338,7 +5338,7 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     name: string | null
-    birthDate: string | null
+    birthDate: Date | null
     gender: GenderType | null
     image_id: string | null
     prefered_location_id: string | null
@@ -5497,7 +5497,7 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     name: string | null
-    birthDate: string | null
+    birthDate: Date | null
     gender: GenderType | null
     image_id: string | null
     prefered_location_id: string | null
@@ -22004,7 +22004,7 @@ export namespace Prisma {
     email?: StringNullableFilter | string | null
     phone?: StringNullableFilter | string | null
     name?: StringNullableFilter | string | null
-    birthDate?: StringNullableFilter | string | null
+    birthDate?: DateTimeNullableFilter | Date | string | null
     gender?: EnumGenderTypeNullableFilter | GenderType | null
     image_id?: StringNullableFilter | string | null
     prefered_location_id?: StringNullableFilter | string | null
@@ -22093,7 +22093,7 @@ export namespace Prisma {
     email?: StringNullableWithAggregatesFilter | string | null
     phone?: StringNullableWithAggregatesFilter | string | null
     name?: StringNullableWithAggregatesFilter | string | null
-    birthDate?: StringNullableWithAggregatesFilter | string | null
+    birthDate?: DateTimeNullableWithAggregatesFilter | Date | string | null
     gender?: EnumGenderTypeNullableWithAggregatesFilter | GenderType | null
     image_id?: StringNullableWithAggregatesFilter | string | null
     prefered_location_id?: StringNullableWithAggregatesFilter | string | null
@@ -23274,7 +23274,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image?: imagesCreateNestedOneWithoutUsersInput
     prefered_location?: locationsCreateNestedOneWithoutUsers_preferedInput
@@ -23296,7 +23296,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image_id?: string | null
     prefered_location_id?: string | null
@@ -23321,7 +23321,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image?: imagesUpdateOneWithoutUsersNestedInput
     prefered_location?: locationsUpdateOneWithoutUsers_preferedNestedInput
@@ -23342,7 +23342,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     prefered_location_id?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23368,7 +23368,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image_id?: string | null
     prefered_location_id?: string | null
@@ -23386,7 +23386,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
   }
 
@@ -23398,7 +23398,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     prefered_location_id?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28005,7 +28005,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image?: imagesCreateNestedOneWithoutUsersInput
     prefered_location?: locationsCreateNestedOneWithoutUsers_preferedInput
@@ -28026,7 +28026,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image_id?: string | null
     prefered_location_id?: string | null
@@ -28206,7 +28206,7 @@ export namespace Prisma {
     email?: StringNullableFilter | string | null
     phone?: StringNullableFilter | string | null
     name?: StringNullableFilter | string | null
-    birthDate?: StringNullableFilter | string | null
+    birthDate?: DateTimeNullableFilter | Date | string | null
     gender?: EnumGenderTypeNullableFilter | GenderType | null
     image_id?: StringNullableFilter | string | null
     prefered_location_id?: StringNullableFilter | string | null
@@ -29182,7 +29182,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image?: imagesCreateNestedOneWithoutUsersInput
     prefered_location?: locationsCreateNestedOneWithoutUsers_preferedInput
@@ -29203,7 +29203,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image_id?: string | null
     prefered_location_id?: string | null
@@ -29390,7 +29390,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image?: imagesCreateNestedOneWithoutUsersInput
     prefered_location?: locationsCreateNestedOneWithoutUsers_preferedInput
@@ -29411,7 +29411,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image_id?: string | null
     prefered_location_id?: string | null
@@ -30054,7 +30054,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image?: imagesCreateNestedOneWithoutUsersInput
     prefered_location?: locationsCreateNestedOneWithoutUsers_preferedInput
@@ -30075,7 +30075,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image_id?: string | null
     prefered_location_id?: string | null
@@ -30105,7 +30105,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image?: imagesCreateNestedOneWithoutUsersInput
     prefered_location?: locationsCreateNestedOneWithoutUsers_preferedInput
@@ -30126,7 +30126,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image_id?: string | null
     prefered_location_id?: string | null
@@ -30232,7 +30232,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image?: imagesUpdateOneWithoutUsersNestedInput
     prefered_location?: locationsUpdateOneWithoutUsers_preferedNestedInput
@@ -30252,7 +30252,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     prefered_location_id?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30281,7 +30281,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image?: imagesUpdateOneWithoutUsersNestedInput
     prefered_location?: locationsUpdateOneWithoutUsers_preferedNestedInput
@@ -30301,7 +30301,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     prefered_location_id?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30644,7 +30644,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image?: imagesCreateNestedOneWithoutUsersInput
     prefered_location?: locationsCreateNestedOneWithoutUsers_preferedInput
@@ -30665,7 +30665,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image_id?: string | null
     prefered_location_id?: string | null
@@ -30759,7 +30759,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image?: imagesCreateNestedOneWithoutUsersInput
     locations?: locationsCreateNestedManyWithoutUsersInput
@@ -30780,7 +30780,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image_id?: string | null
     location_ids?: usersCreatelocation_idsInput | Enumerable<string>
@@ -30878,7 +30878,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image?: imagesCreateNestedOneWithoutUsersInput
     prefered_location?: locationsCreateNestedOneWithoutUsers_preferedInput
@@ -30899,7 +30899,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image_id?: string | null
     prefered_location_id?: string | null
@@ -30933,7 +30933,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image?: imagesUpdateOneWithoutUsersNestedInput
     prefered_location?: locationsUpdateOneWithoutUsers_preferedNestedInput
@@ -30953,7 +30953,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     prefered_location_id?: NullableStringFieldUpdateOperationsInput | string | null
@@ -31123,7 +31123,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     prefered_location?: locationsCreateNestedOneWithoutUsers_preferedInput
     locations?: locationsCreateNestedManyWithoutUsersInput
@@ -31144,7 +31144,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     prefered_location_id?: string | null
     location_ids?: usersCreatelocation_idsInput | Enumerable<string>
@@ -31395,7 +31395,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image?: imagesUpdateOneWithoutUsersNestedInput
     prefered_location?: locationsUpdateOneWithoutUsers_preferedNestedInput
@@ -31415,7 +31415,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     prefered_location_id?: NullableStringFieldUpdateOperationsInput | string | null
@@ -31439,7 +31439,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     prefered_location_id?: NullableStringFieldUpdateOperationsInput | string | null
@@ -31895,7 +31895,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image?: imagesUpdateOneWithoutUsersNestedInput
     prefered_location?: locationsUpdateOneWithoutUsers_preferedNestedInput
@@ -31915,7 +31915,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     prefered_location_id?: NullableStringFieldUpdateOperationsInput | string | null
@@ -31967,7 +31967,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image?: imagesUpdateOneWithoutUsersNestedInput
     prefered_location?: locationsUpdateOneWithoutUsers_preferedNestedInput
@@ -31987,7 +31987,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     prefered_location_id?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32459,7 +32459,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     image_id?: string | null
     location_ids?: usersCreatelocation_idsInput | Enumerable<string>
@@ -32476,7 +32476,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image?: imagesUpdateOneWithoutUsersNestedInput
     prefered_location?: locationsUpdateOneWithoutUsers_preferedNestedInput
@@ -32496,7 +32496,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     prefered_location_id?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32570,7 +32570,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image?: imagesUpdateOneWithoutUsersNestedInput
     locations?: locationsUpdateManyWithoutUsersNestedInput
@@ -32590,7 +32590,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     location_ids?: usersUpdatelocation_idsInput | Enumerable<string>
@@ -32614,7 +32614,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     location_ids?: usersUpdatelocation_idsInput | Enumerable<string>
@@ -32680,7 +32680,7 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     name?: string | null
-    birthDate?: string | null
+    birthDate?: Date | string | null
     gender?: GenderType | null
     prefered_location_id?: string | null
     location_ids?: usersCreatelocation_idsInput | Enumerable<string>
@@ -32798,7 +32798,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     prefered_location?: locationsUpdateOneWithoutUsers_preferedNestedInput
     locations?: locationsUpdateManyWithoutUsersNestedInput
@@ -32818,7 +32818,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    birthDate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableEnumGenderTypeFieldUpdateOperationsInput | GenderType | null
     prefered_location_id?: NullableStringFieldUpdateOperationsInput | string | null
     location_ids?: usersUpdatelocation_idsInput | Enumerable<string>

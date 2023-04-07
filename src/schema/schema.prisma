@@ -106,7 +106,7 @@ model users {
   email     String?     @unique
   phone     String?     @unique
   name      String?
-  birthDate String?
+  birthDate DateTime?
   gender    GenderType?
 
   // Image of the user
