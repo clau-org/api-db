@@ -1,6 +1,6 @@
 {
   "name": "api-db",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "tasks": {
     "prisma": "deno run -A npm:prisma@latest generate --data-proxy --schema=./src/schema/schema.prisma",
     "prisma:push": "deno run -A npm:prisma@latest db push --schema=./src/schema/schema.prisma"
